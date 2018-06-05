@@ -1,2 +1,0 @@
-# OOADP
-OOADP Project
