@@ -22,7 +22,7 @@ var passport = require('passport');
 var flash = require('connect-flash');
 
 var app = express();
-var serverPort = 3000;
+var serverPort = 4000;
 var httpServer = require('http').Server(app);
 
 // view engine setup
