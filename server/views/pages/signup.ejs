@@ -14,7 +14,11 @@
             </div>
             <% } %>
             <form class="form-signin" action="/signup" method="post">
-                <h2 class="form-signin-heading">Please Sign Up</h2>
+                <h2 class="form-signin-heading">
+                    <span class="nowrap">
+                        Sign Up for An Account now!
+                    </span>
+                </h2>
 				<label for="inputName" class="sr-only">Name address</label>
                 <input type="text" id="name" name="name" class="form-control" placeholder="Name" required="">
                 <label for="inputEmail" class="sr-only">Email address</label>
@@ -23,6 +27,8 @@
                 <input type="password" id="password" name="password" class="form-control" placeholder="Password" required="">
                 <button class="btn btn-lg btn-primary btn-block" type="submit">Sign Up</button>
                 <br>
+                <p style ="text-align: center">Already have an account?</p>
+                <a href="/login"><p style ="text-align: center">Login</p></a>
             </form>
         </div>
 
