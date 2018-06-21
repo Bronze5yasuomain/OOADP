@@ -113,3 +113,10 @@ app.set('port', serverPort);
 var server = httpServer.listen(app.get('port'), function () {
     console.log('http server listening on port ' + server.address().port);
 });
+
+var itemsController = requre("./controllers/itemsController")
+app.get("/", itemsController.list);
+app.get("/edit/:id", studentsController.editRecord)
+app.post("/new", itemsController.insert);
+app.post("/edit/:id", studentsController.update);
+app.delete("/:id", studentsController.delete);
