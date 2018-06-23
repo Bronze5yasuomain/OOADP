@@ -116,7 +116,7 @@ var server = httpServer.listen(app.get('port'), function () {
 
 var itemsController = require("./server/controllers/itemsController")
 app.get("/", itemsController.list);
-app.get("/edit/:id", studentsController.editRecord)
+app.get("/edit/:id", itemsController.editRecord)
 app.post("/new", itemsController.insert);
 app.post("/edit/:id", studentsController.update);
 app.delete("/:id", studentsController.delete);

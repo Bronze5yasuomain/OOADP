@@ -1,8 +1,8 @@
 var myDatabase = require('../controllers/database');
-var sequelizeInstance = myDatabase.sequelizeInstance;
+var sequelize = myDatabase.sequelize;
 var Sequelize = myDatabase.Sequelize;
 
-const ItemModel = sequelizeInstance.define('Items',{
+const ItemModel = sequelize.define('Items',{
     name:{
        type: Sequelize.STRING,
     },
