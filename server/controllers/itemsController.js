@@ -1,4 +1,4 @@
-var ItemModel = require('../models/ItemModel');
+var ItemModel = require('../models/items');
 var myDatabase = require('./database');
 var sequelizeInstance = myDatabase.sequelizeInstance;
 
