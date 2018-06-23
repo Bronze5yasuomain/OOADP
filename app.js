@@ -114,7 +114,7 @@ var server = httpServer.listen(app.get('port'), function () {
     console.log('http server listening on port ' + server.address().port);
 });
 
-var itemsController = requre("./controllers/itemsController")
+var itemsController = require("./server/controllers/itemsController")
 app.get("/", itemsController.list);
 app.get("/edit/:id", studentsController.editRecord)
 app.post("/new", itemsController.insert);
