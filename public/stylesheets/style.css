@@ -7,13 +7,11 @@ html {
   min-height: 100%; }
 
 body {
-/* Margin bottom by footer height */ 
-padding-top: 60px;}
+  /* Margin bottom by footer height */
+  margin-bottom: 60px; }
 
-body > .box {
-padding-top: 30px;
-width: 45%;
-margin: auto; }
+body > .container {
+  padding-top: 60px; }
 
 nav {
   background-color: #C5D4E2; }
@@ -65,63 +63,5 @@ nav {
   margin-bottom: 10px;
   border-top-left-radius: 0;
   border-top-right-radius: 0; }
-
-/*shift sign up and login navbar to the right*/
-.nav-item1{
-  float: right;
-  padding: 0 20px;
-}
-
-/*shift username and logout navbar to the right*/
-.nav-item2{
-  float: right;
-  padding: 0 20px;
-
-}
-
-* {box-sizing: border-box}
-
-/* Set height of body and the document to 100% */
-body, html {
-    margin: 0;
-    font-family: Arial;
-}
-
-/* Style tab links */
-.tablink {
-    background-color: #99C4D2;
-    color: white;
-    float: left;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    padding: 14px 16px;
-    font-size: 17px;
-    width: 33%;
-}
-
-.tablink:hover {
-    background-color: #777;
-}
-
-/* Style the tab content (and add height:100% for full page content) */
-.tabcontent {
-    color: black;
-    display: none;
-    padding: 100px 20px;
-    height: 100%;
-    width: 75%;
-}
-
-/*style the tabs in profile.ejs*/
-.second{
-  margin: auto;
-  width: 80%;
-}
-
-/* to make sign up words in one line*/
-.nowrap {
-  white-space: nowrap ;
-}
 
 /*# sourceMappingURL=style.css.map */
