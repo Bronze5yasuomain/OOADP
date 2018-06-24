@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <% include ../partials/stylesheet %>
+    <style>
+      #style1, th, td {
+          border: 1px solid black;
+          border-collapse: collapse;
+      }
+      #style1, th, td {
+          padding: 5px;
+          text-align: left;
+      }
+      </style>
+</head>
+<body>
+    <% include ../partials/headerafterlogin %>
+
+    <table style="width:100%" id="style1">
+      <tr>
+        <th>Username:</th>
+        <td>Bill Gates</td>
+      </tr>
+      <tr>
+        <th>Email:</th>
+        <td>123@hotmail.com</td>
+      </tr>
+      <tr>
+        <th>Country:</th>
+        <td>Korea</td>
+      </tr>
+       <tr>
+        <th>Gender:</th>
+        <td>Male</td>
+      </tr>
+    </table>
+    <div class="modal-footer">
+      <button type="submit" class="btn btn-primary" onclick=saveChanges()>Save Changes</button>
+      <button type="button" class="btn btn-secondary" onclick=discardChanges()>Cancel</button>
+    </div>
+    
+    <script>
+      $('.editBtn').click(function () {
+        var record_num = $(this).closest("tr").data('id');
+        location.href = "<%-urlPath %>edit/"+record_num;
+      });
+    </script>
+
+    <% include ../partials/footer %>
+    <% include ../partials/javascript %>
+</body>
+</html>

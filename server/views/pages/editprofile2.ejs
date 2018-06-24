@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <% include ../partials/stylesheet %>
+    <style>
+      #style1, th, td {
+          border: 1px solid black;
+          border-collapse: collapse;
+      }
+      #style1, th, td {
+          padding: 5px;
+          text-align: left;
+      }
+      </style>
+</head>
+<body>
+    <% include ../partials/headerafterlogin %>
+
+    <div class="modal-header">
+      <h4 class="modal-title" id="myModalLabel">Edit Student Record</h4>
+  </div>
+  <div class="modal-body">
+      <fieldset class="form-group">
+          <label for="inputUsername">Username</label>
+          <input type="text" id="inputUsername" name="Username" class="form-control" placeholder="Username" required="true" value="<%=item.name%>">
+      </fieldset>
+      <fieldset class="form-group">
+          <label for="inputCountry">Country</label>
+          <input type="text" id="inputCountry" name="country" class="form-control" placeholder="Country" required="true" value="<%=item.country%>">
+      </fieldset>
+      <fieldset class="form-group">
+          <label for="inputGender">Gender</label>
+          <input type="text" id="inputGender" name="gender" class="form-control" placeholder="Gender" required="true" value="<%=item.gender%>">
+      </fieldset>
+  </div>
+  <div class="modal-footer">
+      <button type="submit" class="btn btn-primary" onclick=saveChanges()>Save Changes</button>
+      <button type="button" class="btn btn-secondary" onclick=discardChanges()>Cancel</button>
+  </div>
+  <script>
+    function saveChanges() {
+        var url = "<%=hostPath%>/edit/<%=item.id%>";
+        var newValues = {
+            name: $("#inputUsername").val(),
+            country: $("#inputCountry").val(),
+            gender: $("#inputGender").val()
+        }
+        $.ajax({
+            url: url,
+            type: "POST",
+            data: JSON.stringify(newValues),
+            dataType: "json",
+            contentType: "application/json",
+            success: function(result){
+                alert("Profile updated successfully");
+                location.href = "<%=hostPath%>"
+            },
+            error: function(result){
+                alert("Error updating user profile");
+                discardChanges();
+            }
+        })
+    }
+
+    function discardChanges() {
+        location.href = "<%=hostPath%>"
+    }
+</script>
+
+    <% include ../partials/footer %>
+    <% include ../partials/javascript %>
+</body>
+</html>
