@@ -82,6 +82,8 @@ app.post('/signup', passport.authenticate('local-signup', {
 
 app.get('/profile', auth.isLoggedIn, auth.profile);
 
+app.get('/payment', auth.isLoggedIn, auth.profile);
+
 // Logout Page
 app.get('/logout', function (req, res) {
     req.logout();
