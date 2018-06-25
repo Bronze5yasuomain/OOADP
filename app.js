@@ -204,12 +204,3 @@ app.get("/edit/:id", itemsController.editRecord)
 app.post("/new", itemsController.insert);
 app.post("/edit/:id", itemsController.update);
 app.delete("/:id", itemsController.delete);
-
-var EditProfileController = require("./server/controllers/EditProfileController");
-app.get('/editprofile', EditProfileController.hasAuthorization, EditProfileController.list);
-app.get("/editprofile2/:id", EditProfileController.editProfile);
-app.post('/editprofile', EditProfileController.hasAuthorization, EditProfileController.insert);
-app.post("/editprofile2/:id", EditProfileController.update);
-
-
-
