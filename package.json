@@ -20,6 +20,7 @@
     "node-sass-middleware": "^0.11.0",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
+    "paypal-rest-sdk": "^1.8.1",
     "sequelize": "^4.37.6",
     "sequelize-transforms": "^2.0.0",
     "socket.io": "^2.1.0",

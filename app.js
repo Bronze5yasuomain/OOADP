@@ -4,6 +4,8 @@ var path = require('path');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+const ejs = require('ejs');
+const paypal = require('paypal-rest-sdk');
 
 // Import home controller
 var index = require('./server/controllers/index');
@@ -82,7 +84,87 @@ app.post('/signup', passport.authenticate('local-signup', {
 
 app.get('/profile', auth.isLoggedIn, auth.profile);
 
-app.get('/payment', auth.isLoggedIn, auth.profile);
+app.get('/payment', (req, res) => res.render('payment'));
+
+// Payment routes
+paypal.configure({
+    'mode': 'sandbox',
+    'client_id': 'AXK_C3j9Kcqx9QPqx5wOFQmoknKQgriKeGpTOfkEMo9HpK1RF6jHaEYPj2Ccexl_TU13_pso_e8TzW9m',
+    'client_secret': 'ECVVyoDOvvcUS8qyDwRIjxSRQ_CqxWSI_JobPHbbcVrJB1NufXTlIfOHv6O_GFqnowqvUHU1NWj05SKb'
+})
+
+
+
+app.post('/transaction', (req, res) => {
+    const create_payment_json = {
+        "intent": "sale",
+        "payer": {
+            "payment_method": "paypal"
+        },
+        "redirect_urls": {
+            "return_url": "http://localhost:4000/success",
+            "cancel_url": "http://localhost:4000/cancel"
+        },
+        "transactions": [{
+            "item_list": {
+                "items": [{
+                    "name": "Red Sox Hat",
+                    "sku": "001",
+                    "price": "25.00",
+                    "currency": "SGD",
+                    "quantity": 1
+                }]
+            },
+            "amount": {
+                "currency": "SGD",
+                "total": "25.00"
+            },
+            "description": "Hat for the best team ever."
+        }]
+    };
+});    
+
+    paypal.payment.create(create_payment_json, function (error, payment) {
+        if (error) {
+            throw error;
+        } else {
+            for (let i= 0; i < payment.links.length; i++) {
+                if (payment.links[i].rel === 'approval_url') {
+                    res.redirect(payment.links[i].href);
+                }
+            }   
+            console.log(JSON.stringify(payment));    
+        }
+    });
+
+    
+app.get('/success', (req, res) => {
+    const payerId = req.query.PayerID;
+    const paymentId = req.query.paymentId;
+    
+    const execute_payment_json = {
+        "payer_id": payerId,
+        "transactions": [{
+            "amount": {
+                "currency": "USD",
+                "total": "25.00"
+            }
+        }]
+    };
+
+    paypal.payment.execute(paymentId, execute_payment_json, function (error, payment) {
+        if (error) {
+            console.log(error.response);
+            throw error;
+        } else {
+            console.log(JSON.stringify(payment));
+            res.send('success');
+        }
+    })    
+});
+
+app.get('/cancel', (req, res) => res.send('Cancelled'));
+
 
 // Logout Page
 app.get('/logout', function (req, res) {
@@ -128,3 +210,6 @@ app.get('/editprofile', EditProfileController.hasAuthorization, EditProfileContr
 app.get("/editprofile2/:id", EditProfileController.editProfile);
 app.post('/editprofile', EditProfileController.hasAuthorization, EditProfileController.insert);
 app.post("/editprofile2/:id", EditProfileController.update);
+
+
+
