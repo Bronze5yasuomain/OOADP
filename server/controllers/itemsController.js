@@ -22,9 +22,9 @@ exports.insert = function (req,res) {
 };
 
 exports.list=function(req, res){
-    StudentModel.findAll({
+    ItemModel.findAll({
         attributes: ['id','name','price','description','condition','category']
-    }).then(function (students) {
+    }).then(function (items) {
         res.render('index', {
             title:"Item List",
             itemList: items,
@@ -39,7 +39,7 @@ exports.list=function(req, res){
 
 exports.editRecord = function (req, res) {
     var record_num = req.params.id;
-    StudentModel.findById(record_num).then(function (studentRecord){
+    ItemModel.findById(record_num).then(function (itemRecord){
         res.render('editRecord', {
             title: "Item list",
             item: itemRecord,
@@ -75,12 +75,12 @@ exports.update=function(req, res){
 exports.delete = function (req, res){
     var record_num = req.params.id;
     console.log("deleting"+record_num);
-    StudentModel.destroy({where: {id: record_num} }).then((deletedRecord) => {
+    ItemModel.destroy({where: {id: record_num} }).then((deletedRecord) => {
         if (!deletedRecord){
             return res.send(400, {
                 message: "error"
             });
         }
-        res.status(200).send({ message: "Deleted student record:" + record_num});
+        res.status(200).send({ message: "Deleted jitem record:" + record_num});
     });
 }
