@@ -23,14 +23,6 @@ const ItemModel = sequelize.define('Items',{
     category:{
         type: Sequelize.STRING,
     },
-    seller_id:{
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        references: {
-            model: 'users',
-            key: "id"
-        }
-    }
 });
 
 ItemModel.sync({ force:false, logging:console.log }).then(() => {

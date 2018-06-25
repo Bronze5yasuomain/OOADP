@@ -10,7 +10,6 @@ exports.insert = function (req,res) {
         description: req.body.description,
         condition: req.body.condition,
         category: req.body.category,
-        seller_id: req.body.seller_id,
     }
     ItemModel.create(itemdata).then((newRecord, created) => {
         if (!newRecord){
@@ -62,7 +61,6 @@ exports.update=function(req, res){
         description: req.body.description,
         condition: req.body.condition,
         category: req.body.category,
-        seller_id: req.body.seller_id,
     }
     ItemModel.update(updateData,{where:{id:record_num} }).then((updatedRecord)=>{
         if (!updatedRecord || updatedRecord == 0){

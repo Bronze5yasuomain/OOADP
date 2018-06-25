@@ -17,11 +17,6 @@ const Users = sequelize.define('Users', {
     },
     password: {
         type: Sequelize.STRING
-    },
-    account_type: {
-        type: Sequelize.INTEGER,
-        defaultValue: 0
-
     }
 });
 
@@ -30,10 +25,9 @@ Users.sync({force: false, logging:console.log}).then(()=>{
     console.log("users table synced");
     return Users.upsert({
         id: 1,
-        name: 'Admin',
+        name: 'Ben',
         email: 'a@b.com',
-        password: '1234',
-        account_type: 1
+        password: '1234'
     })
 });
 
