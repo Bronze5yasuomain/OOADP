@@ -1,6 +1,6 @@
 var ItemModel = require('../models/items');
 var myDatabase = require('./database');
-var sequelizeInstance = myDatabase.sequelizeInstance;
+var sequelize = myDatabase.sequelize;
 
 exports.insert = function (req,res) {
     var itemdata = {
