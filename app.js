@@ -204,3 +204,6 @@ app.get("/edit/:id", itemsController.editRecord)
 app.post("/new", itemsController.insert);
 app.post("/edit/:id", itemsController.update);
 app.delete("/:id", itemsController.delete);
+
+
+app.get("/orders", orderController.list);

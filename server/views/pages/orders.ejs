@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <% include ../partials/stylesheet %>
+    <% include ../partials/javascript %>
+</head>
+<body>
+    <% include ../partials/header %>
+<table class="table">
+    <thread>
+      <tr>
+        <th>Order ID</th>
+        <th>Item Name</th>
+        <th>Item ID</th>
+        <th>Item Price</th>
+        <th>Quantity</th>
+        <th>Seller ID</th>
+        <th>Buyer ID</th>
+      </tr>
+      <% for(var i=0; i < orderList.length; i++){ %>
+        <tr class="rowRecord" data-id="<%= orderList[i].id %>">
+          <td>
+            <%= orderList[i].Order_id %>
+          </td>
+          <td>
+            <%= orderList[i].ItemName %>
+          </td>
+          <td>
+            <%= orderList[i].ItemId %>
+          </td>
+          <td>
+            <%= orderList[i].ItemPrice %>
+          </td>
+          <td>
+            <%= orderList[i].Quantity %>
+          </td>
+          <td>
+            <%= orderList[i].seller_id %>
+          </td>
+          <td>
+            <%= orderList[i].Buyer_id %>
+          </td>
+          <td>
+            <input type="button" class="deleteBtn"  value="Delete">
+          </td>
+        </tr>
+        <% } %>
+    </thread>
+  </table>
+  <script>
+    $('.deleteBtn').click(function () {
+      var record_num = $(this).closest("tr").data('id');
+      $.ajax({
+        url: '<%-urlPath%>' + record_num,
+        type: 'DELETE',
+        success: function (result) {
+          console.log(result.message);
+          var itemToRemove = '.rowRecord[data-id=' + record_num + ']';
+          $(itemToRemove).remove();
+        },
+        error: function (result) {
+          alert("Unable to delete student record.");
+          console.log(result.message);
+        }
+      });
+    });
+  </script>
+</body>
+</html>
