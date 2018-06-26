@@ -4,6 +4,47 @@
     <title><%= title %></title>
     <% include ../partials/stylesheet %>
 </head>
+<style>
+    body {
+        /* Margin bottom by footer height */ 
+        padding-top: 60px;}
+
+    body > .box {
+        padding-top: 30px;
+        width: 45%;
+        margin: auto; }
+    /* Style tab links */
+    .tablink {
+        background-color: #99C4D2;
+        color: grey;
+        float: left;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        padding: 14px 16px;
+        font-size: 17px;
+        width: 33%;
+    }
+
+    .tablink:hover {
+        color: black;
+    }
+
+    /* Style the tab content (and add height:100% for full page content) */
+    .tabcontent {
+        color: black;
+        display: none;
+        padding: 100px 20px;
+        height: 100%;
+        width: 75%;
+    }
+
+    /*style the tabs in profile.ejs*/
+    .second{
+        margin: auto;
+        width: 80%;
+    }
+</style>
 <body>
     <% include ../partials/headerafterlogin %>
 
@@ -23,7 +64,7 @@
             </div>
         </div>
     </div>
-
+<br>
 <div class="second">
     <button class="tablink" onclick="openPage('Home', this, '#777;')">Listings</button>
     <button class="tablink" onclick="openPage('News', this, '#777;')" id="defaultOpen">Reviews</button>
@@ -70,6 +111,3 @@ document.getElementById("defaultOpen").click();
         <% include ../partials/javascript %>
     </body>
     </html>
-
-
-

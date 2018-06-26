@@ -1,4 +1,4 @@
-// models/users.js
+// models/profile.js
 var myDatabase = require('../controllers/database');
 var sequelize = myDatabase.sequelize;
 var Sequelize = myDatabase.Sequelize;
@@ -17,6 +17,17 @@ const Users = sequelize.define('Users', {
     },
     password: {
         type: Sequelize.STRING
+    },
+    address: {
+        type: Sequelize.STRING
+    },
+    gender: {
+        type: Sequelize.STRING
+    },
+    account_type: {
+        type: Sequelize.STRING,
+        allowNull: false,
+        defaultValue: "standard"
     }
 });
 
@@ -27,7 +38,9 @@ Users.sync({force: false, logging:console.log}).then(()=>{
         id: 1,
         name: 'Ben',
         email: 'a@b.com',
-        password: '1234'
+        password: '1234',
+        address: 'Blk 170 Jurong West Street 97, #18-30',
+        gender: 'Male',
     })
 });
 
