@@ -94,7 +94,6 @@ paypal.configure({
 })
 
 
-
 app.post('/transaction', (req, res) => {
     const create_payment_json = {
         "intent": "sale",
@@ -121,8 +120,7 @@ app.post('/transaction', (req, res) => {
             },
             "description": "Hat for the best team ever."
         }]
-    };
-});    
+    };    
 
     paypal.payment.create(create_payment_json, function (error, payment) {
         if (error) {
@@ -136,7 +134,7 @@ app.post('/transaction', (req, res) => {
             console.log(JSON.stringify(payment));    
         }
     });
-
+});
     
 app.get('/success', (req, res) => {
     const payerId = req.query.PayerID;
