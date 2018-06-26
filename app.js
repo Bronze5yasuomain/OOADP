@@ -180,13 +180,13 @@ var server = httpServer.listen(app.get('port'), function () {
 });
 
 var itemsController = require("./server/controllers/itemsController")
-app.get("/", itemsController.list);
-app.get("/edit/:id", itemsController.editRecord)
-app.post("/new", itemsController.insert);
-app.post("/edit/:id", itemsController.update);
-app.delete("/:id", itemsController.delete);
+app.get("/item", itemsController.list);
+// app.get("/edit/:id", itemsController.editRecord)
+// app.post("/new", itemsController.insert);
+// app.post("/edit/:id", itemsController.update);
+// app.delete("/:id", itemsController.delete);
 
-
+var orderController = require("./server/controllers/orderController")
 app.get("/orders", orderController.list);
 
 // catch 404 and forward to error handler

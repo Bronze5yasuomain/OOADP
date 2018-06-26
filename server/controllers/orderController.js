@@ -4,23 +4,20 @@ var sequelize = myDatabase.sequelize;
 
 exports.insert = function (req, res) {
     var orderData = {
-        ItemName: req.body.ItemName,
         ItemId: req.body.ItemId,
-        ItemPrice: req.body.ItemPrice,
-        seller_id: req.body.seller_id,
         Quantity: req.body.Quantity,
         Buyer_id: req.body.Buyer_id,
         Order_id: req.body.Order_id
-        }
-}
-Order.create(orderData).then((newRecord, created) => {
-    if(!newRecord) {
-        return res.send(400, {
-            message: "error"
-        });
     }
-    res.redirect('/order');
-});
+    Order.create(orderData).then((newRecord, created) => {
+        if(!newRecord) {
+            return res.send(400, {
+                message: "error"
+            });
+        }
+        res.redirect('/order');
+    })
+};
 exports.list = function (req, res) {
     orderData.findAll({
         attributes: ['ItemName', 'ItemId', 'ItemPrice', 'seller_id', 'Quantity', 'Buyer_id', 'Order_id']

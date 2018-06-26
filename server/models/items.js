@@ -39,7 +39,7 @@ const ItemModel = sequelize.define('Items',{
     }
 });
 module.exports = sequelize.model('Items', ItemModel);
-// ItemModel.sync({ force:false, logging:console.log }).then(() => {
+ItemModel.sync({ force:false, logging:console.log }).then(() => {
 //     console.log("Items synced");
 //     ItemModel.upsert({
 //         id:1,
@@ -60,4 +60,4 @@ module.exports = sequelize.model('Items', ItemModel);
 //         category:"Electronics",
 
 //     });
-// });
+});

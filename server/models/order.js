@@ -3,32 +3,11 @@ var sequelize = myDatabase.sequelize;
 var Sequelize = myDatabase.Sequelize;
 
 const Order = sequelize.define('Orders',{
-    ItemName:{
-        type: Sequelize.STRING,
-        references: {
-            model:'Items',
-            key: 'name'
-        }
-    },
     ItemId:{
         type: Sequelize.INTEGER,
         references: {
             model:'Items',
             key: 'id'
-        }
-    },
-    ItemPrice:{
-        type: Sequelize.DOUBLE,
-        references: {
-            model:'Items',
-            key: 'price'
-        }
-    },
-    seller_id:{
-        type: Sequelize.INTEGER,
-        references:{
-            model: 'Items',
-            key:'seller_id'
         }
     },
     Quantity:{
@@ -43,11 +22,12 @@ const Order = sequelize.define('Orders',{
         }
     },
     Order_id:{
-        type: Sequlize.INTEGER,
+        type: Sequelize.INTEGER,
         autoIncrement: true,
         primaryKey: true,
 
     }
 });
 
+Order.sync({ force:false, logging:console.log }).then(() => {});
 module.exports = sequelize.model('Orders', Order);
