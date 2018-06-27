@@ -25,8 +25,8 @@ exports.list=function(req, res){
     ItemModel.findAll({
         attributes: ['id','name','price','description','condition','category']
     }).then(function (items) {
-        res.render('payment', {
-            title:"Payment page",
+        res.render('index', {
+            title:"Item List",
             itemList: items,
             urlPath: req.protocol + "://" + req.get("host") + req.url
         });
