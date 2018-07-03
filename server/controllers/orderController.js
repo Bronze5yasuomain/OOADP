@@ -20,8 +20,6 @@ exports.insert = function (req, res) {
     })
 };
 exports.list = function (req, res) {
-    // orderData.findAll({
-    //     attributes: ['ItemId', 'Quantity', 'Buyer_id', 'Order_id']
     sequelize.query('select o.Quantity, o.ItemId, o.Buyer_id, o.Order_id, i.name as Item_Name, i.price as Item_Price, i.seller_id as Seller_id from Orders o join Items i on o.ItemId = i.id',{ model: Order })
     .then((order) => {
         // console.log(order)
