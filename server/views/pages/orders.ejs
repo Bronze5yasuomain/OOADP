@@ -2,13 +2,14 @@
 <html>
 <head>
     <title><%= title %></title>
-    <% include ../partials/stylesheet %>
-    <% include ../partials/javascript %>
+    <!-- <% include ../partials/stylesheet %> -->
+    <!-- <% include ../partials/javascript %> -->
 </head>
 <body>
-    <% include ../partials/header %>
-<table class="table">
-    <thread>
+    <!-- <% include ../partials/headerafterlogin %> -->
+    
+<table class="table" style="padding-top: 300px">
+    <thead>
       <tr>
         <th>Order ID</th>
         <th>Item Name</th>
@@ -18,35 +19,35 @@
         <th>Seller ID</th>
         <th>Buyer ID</th>
       </tr>
-      <% for(var i=0; i < orderList.length; i++){ %>
-        <tr class="rowRecord" data-id="<%= orderList[i].id %>">
+      <% orderList.forEach(function(orderList){ %>
+        <tr class="rowRecord" data-id="<%= orderList.id %>">
           <td>
-            <%= orderList[i].Order_id %>
+            <%= orderList.Order_id %>
           </td>
           <td>
-            <%= orderList[i].ItemName %>
+            <%= orderList.Item_Name %>
           </td>
           <td>
-            <%= orderList[i].ItemId %>
+            <%= orderList.ItemId %>
           </td>
           <td>
-            <%= orderList[i].ItemPrice %>
+            <%= orderList.Item_Price %>
           </td>
           <td>
-            <%= orderList[i].Quantity %>
+            <%= orderList.Quantity %>
           </td>
           <td>
-            <%= orderList[i].seller_id %>
+            <%= orderList.Seller_id %>
           </td>
           <td>
-            <%= orderList[i].Buyer_id %>
+            <%= orderList.Buyer_id %>
           </td>
           <td>
             <input type="button" class="deleteBtn"  value="Delete">
           </td>
         </tr>
-        <% } %>
-    </thread>
+        <% }) %>
+    </thead>
   </table>
   <script>
     $('.deleteBtn').click(function () {
