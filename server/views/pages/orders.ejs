@@ -2,11 +2,10 @@
 <html>
 <head>
     <title><%= title %></title>
-    <!-- <% include ../partials/stylesheet %> -->
-    <!-- <% include ../partials/javascript %> -->
+
 </head>
 <body>
-    <!-- <% include ../partials/headerafterlogin %> -->
+   
     
 <table class="table" style="padding-top: 300px">
     <thead>
@@ -20,7 +19,7 @@
         <th>Buyer ID</th>
       </tr>
       <% orderList.forEach(function(orderList){ %>
-        <tr class="rowRecord" data-id="<%= orderList.id %>">
+        <tr class="rowRecord" data-id="<%= orderList.Order_id %>">
           <td>
             <%= orderList.Order_id %>
           </td>
