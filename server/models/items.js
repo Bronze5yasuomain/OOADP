@@ -40,16 +40,18 @@ const ItemModel = sequelize.define('Items',{
 });
 module.exports = sequelize.model('Items', ItemModel);
 ItemModel.sync({ force:false, logging:console.log }).then(() => {
-//     console.log("Items synced");
-//     ItemModel.upsert({
-//         id:1,
-//         name:"Iphone 7 Plus",
-//         price:870.00,
-//         description:"5.5 inch Retina Display, A10 Fusion Chip",
-//         condition:"New",
-//         category:"Electronics",
+    console.log("Items synced");
+    ItemModel.upsert({
+        id:1,
+        name:"Iphone 7 Plus",
+        price:870.00,
+        description:"5.5 inch Retina Display, A10 Fusion Chip",
+        condition:"New",
+        category:"Electronics",
+        quantity_left: "2",
+        seller_id:"2",
 
-//     });
+    });
 //     console.log("Items synced");
 //     ItemModel.upsert({
 //         id:2,
