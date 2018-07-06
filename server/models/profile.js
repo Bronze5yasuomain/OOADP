@@ -18,17 +18,17 @@ const Users = sequelize.define('Users', {
     password: {
         type: Sequelize.STRING
     },
-    // address: {
-    //     type: Sequelize.STRING
-    // },
-    // gender: {
-    //     type: Sequelize.STRING
-    // },
-    // account_type: {
-    //     type: Sequelize.STRING,
-    //     allowNull: false,
-    //     defaultValue: "standard"
-    // }
+     address: {
+         type: Sequelize.STRING
+    },
+     gender: {
+         type: Sequelize.STRING
+    },
+     account_type: {
+         type: Sequelize.STRING,
+         allowNull: false,
+         defaultValue: "standard"
+    }
 });
 
 // force: true will drop the table if it already exists
@@ -39,8 +39,8 @@ Users.sync({force: false, logging:console.log}).then(()=>{
         name: 'Ben',
         email: 'a@b.com',
         password: '1234',
-        // address: 'Blk 170 Jurong West Street 97, #18-30',
-        // gender: 'Male',
+        address: 'Blk 170 Jurong West Street 97, #18-30',
+        gender: 'Male',
     })
 });
 

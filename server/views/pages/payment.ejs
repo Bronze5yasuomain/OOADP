@@ -6,12 +6,37 @@
 </head>
 <body>
     <% include ../partials/headerafterlogin %>
-<body>
-    <strong>Item:</strong>: <%= payment.item %><br>
-    <strong>Price:</strong>: <%= payment.price %>
-    <form action="/payment" method="post">
-        <input type="submit" value="Buy">
-    </form>
+        <% paymentList.forEach(function(paymentList) { %>
+        <fieldset class="form-group">
+            <label for="inputPaymentMethod"></label>
+            <%= paymentList.payment_method %>
+        </fieldset>
+        <fieldset class="form-group">
+            <label for="inputId"></label>
+            <%= paymentList.item_id %>
+        </fieldset>
+        <fieldset class="form-group">
+            <label for="inputItem"></label>
+            <%= paymentList.item %>
+        </fieldset>
+        <fieldset class="form-group">
+            <label for="inputPrice"></label>
+            <%= paymentList.price %>
+        </fieldset>
+        <fieldset class="form-group">
+            <label for="inputCurrency"></label>
+            <%= paymentList.currency %>
+        </fieldset>
+        <fieldset>
+            <label for="inputQuantity"></label>
+            <%= paymentList.quantity %>
+        </fieldset>
+        <fieldset class="form-group">
+            <label for="inputDescription"></label>
+            <%= paymentList.description %>
+        </fieldset>
+        <input type = "submit" value = "Buy">
+
     <% include ../partials/footer %>
     <% include ../partials/javascript %>
 </body>
