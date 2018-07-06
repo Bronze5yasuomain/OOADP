@@ -4,8 +4,7 @@ var path = require('path');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-const ejs = require('ejs');
-const paypal = require('paypal-rest-sdk');
+const ejs = require('ejs'); 
 
 // Import home controller
 var index = require('./server/controllers/index');
@@ -24,8 +23,8 @@ var passport = require('passport');
 var flash = require('connect-flash');
 
 var app = express();
-var serverPort = 4000;
-var httpServer = require('http').Server(app);
+// var serverPort = 4000;
+// var httpServer = require('http').Server(app);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'server/views/pages'));
@@ -84,16 +83,17 @@ app.post('/signup', passport.authenticate('local-signup', {
 
 app.get('/profile', auth.isLoggedIn, auth.profile);
 
-paypal.configure({
-    'mode': 'sandbox',
-    'client_id': 'AXK_C3j9Kcqx9QPqx5wOFQmoknKQgriKeGpTOfkEMo9HpK1RF6jHaEYPj2Ccexl_TU13_pso_e8TzW9m',
-    'client_secret': 'ECVVyoDOvvcUS8qyDwRIjxSRQ_CqxWSI_JobPHbbcVrJB1NufXTlIfOHv6O_GFqnowqvUHU1NWj05SKb'
-})
-
 // Payment route
 var paymentController = require("./server/controllers/paymentController")
 app.get("/payment", paymentController.hasAuthorization, paymentController.list);
 app.post("/payment", paymentController.hasAuthorization, paymentController.create);
+
+app.get('/success', paymentController.hasAuthorization, paymentController.success);
+
+app.get('/cancel', function (req, res) {
+    req.cancel();
+    res.send('Transaction is cancelled')
+})
 
 // Logout Page
 app.get('/logout', function (req, res) {
@@ -104,11 +104,11 @@ app.get('/logout', function (req, res) {
 
 module.exports = app;
 
-app.set('port', serverPort);
+// app.set('port', serverPort);
 
-var server = httpServer.listen(app.get('port'), function () {
-    console.log('http server listening on port ' + server.address().port);
-});
+// var server = httpServer.listen(app.get('port'), function () {
+//     console.log('http server listening on port ' + server.address().port);
+// });
 
 var itemsController = require("./server/controllers/itemsController")
 app.get("/item", itemsController.list);
@@ -137,3 +137,8 @@ app.use(function (err, req, res, next) {
         error: {}
     });
 });
+
+
+app.listen(4000, ()=> {
+    console.log("Server started.")
+})

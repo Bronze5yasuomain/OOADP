@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <% include ../partials/stylesheet %>
+</head>
+<body>
+    <% include ../partials/headerafterlogin %>
+    <table class="table">
+        <thread>
+          <tr>
+            <th>Item ID</th>
+            <th>Item</th>
+            <th>Quantity</th>
+            <th>Price</th>
+          </tr>
+            <tr>
+              <td>
+                <%= item_id %>
+              </td>
+              <td>
+                <%= item %>
+              </td>
+              <td>
+                <%= quantity %>
+              </td>
+              <td>
+                <%= price %>
+              </td>
+            </tr>
+        </thread>
+    </table>
+
+    <% include ../partials/footer %>
+    <% include ../partials/javascript %>
+</body>
+</html>
