@@ -48,13 +48,8 @@ ItemModel.sync({ force:false, logging:console.log }).then(() => {
         description:"5.5 inch Retina Display, A10 Fusion Chip",
         condition:"New",
         category:"Electronics",
-<<<<<<< HEAD
-        // quantity_left: "2",
-        // seller_id:"2",
-=======
         quantity_left: 2,
         seller_id:1
->>>>>>> d31be5bb2f2934824c394b6ed0b3931dd94d8f20
 
     });
 //     console.log("Items synced");
