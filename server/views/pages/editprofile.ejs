@@ -4,49 +4,88 @@
     <title><%= title %></title>
     <% include ../partials/stylesheet %>
     <style>
-      #style1, th, td {
-          border: 1px solid black;
-          border-collapse: collapse;
+      .form-control{
+        margin-bottom: 10px;
       }
-      #style1, th, td {
-          padding: 5px;
-          text-align: left;
+      .alert{
+        display: none;
       }
-      </style>
+    </style>
 </head>
 <body>
     <% include ../partials/headerafterlogin %>
-
-    <table style="width:100%" id="style1">
-      <tr>
-        <th>Username:</th>
-        <td>Bill Gates</td>
-      </tr>
-      <tr>
-        <th>Email:</th>
-        <td>123@hotmail.com</td>
-      </tr>
-      <tr>
-        <th>Country:</th>
-        <td>Korea</td>
-      </tr>
-       <tr>
-        <th>Gender:</th>
-        <td>Male</td>
-      </tr>
-    </table>
-    <div class="modal-footer">
-      <button type="submit" class="btn btn-primary" onclick=saveChanges()>Save Changes</button>
-      <button type="button" class="btn btn-secondary" onclick=discardChanges()>Cancel</button>
+    <div><%=item.name%></div>
+    <div class="container">
+      <h1>Edit Profile</h1>
+      <hr>
+      <form class="form-horizontal" role="form">
+        <div class="form-group">
+          <label class="col-lg-3 control-label">Name:</label>
+          <div class="col-lg-7">
+            <input class="form-control" type="text" id="inputName" name="name" placeholder="Name" value="<%=item.name%>">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-lg-3 control-label">Gender:</label>
+          <div class="col-lg-7">
+            <input class="form-control" type="text" id="inputGender" name="gender" placeholder="Gender" value="<%=item.gender%>" >
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-lg-3 control-label">Email:</label>
+          <div class="col-lg-7">
+            <input class="form-control" type="text" id="inputEmail" name="email" placeholder="Email" value="<%=item.email%>">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-lg-3 control-label">Address:</label>
+          <div class="col-lg-7">
+            <input class="form-control" type="text" id="inputAddress" name="address" placeholder="Address"  value="<%=item.address%>">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-3 control-label"></label>
+          <div class="col-md-8">
+            <button type="submit" class="btn btn-primary" onclick=saveChanges()>Save Changes</button>
+            <span></span>
+           <button type ="button" class="btn btn-secondary" onclick=discardChanges()>Cancel</button>
+          </div>
+        </div>
+      </form>
     </div>
-    
-    <script>
-      $('.editBtn').click(function () {
-        var record_num = $(this).closest("tr").data('id');
-        location.href = "<%-urlPath %>edit/"+record_num;
-      });
-    </script>
+</div>
+</div>
+<hr width = "85%">
+<script>
+  function saveChanges() {
+            var url = "/editprofile";
+            var newValues = {
+                name: $("#inputName").val(),
+                gender: $("#inputGender").val(),
+                email: $("#inputEmail").val(),
+                address: $("#inputAddress").val()
+            }
+            $.ajax({
+                url: url,
+                type: "POST",
+                data: JSON.stringify(newValues),
+                dataType: "json",
+                contentType: "application/json",
+                success: function(result){
+                    alert("User profile updated successfully");
+                    location.href = "/editprofile"
+                },
+                error: function(result){
+                    alert("Error updating user profile");
+                    discardChanges();
+                }
+            })
+        }
 
+        function discardChanges() {
+            location.href = "/editprofile"
+        }
+</script>
     <% include ../partials/footer %>
     <% include ../partials/javascript %>
 </body>
