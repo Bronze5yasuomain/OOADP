@@ -120,6 +120,15 @@ app.get("/item", itemsController.list);
 var orderController = require("./server/controllers/orderController")
 app.get("/orders", orderController.list);
 
+var ProfileController = require("./server/controllers/ProfileController")
+app.post("/editprofile", ProfileController.insert);
+app.get("/editprofile", ProfileController.editRecord);
+app.post("/editprofile", ProfileController.update);
+
+//app.get("/editprofile", function(req, res) {
+//    res.render('editprofile', { title: 'Edit Profile Page' , urlPath: '/editprofile'});
+//})
+
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
     var err = new Error('Not Found');
