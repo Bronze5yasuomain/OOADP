@@ -18,28 +18,28 @@
         <th>Seller ID</th>
         <th>Buyer ID</th>
       </tr>
-      <% orderList.forEach(function(orderList){ %>
-        <tr class="rowRecord" data-id="<%= orderList.Order_id %>">
+      <% orderList.forEach(function(order){ %>
+        <tr class="rowRecord" data-id="<%= order.Order_id %>">
           <td>
-            <%= orderList.Order_id %>
+            <%= order.Order_id %>
           </td>
           <td>
-            <%= orderList.Item_Name %>
+            <%= order.Item_Name %>
           </td>
           <td>
-            <%= orderList.ItemId %>
+            <%= order.ItemId %>
           </td>
           <td>
-            <%= orderList.Item_Price %>
+            <%= order.Item_Price %>
           </td>
           <td>
-            <%= orderList.Quantity %>
+            <%= order.Quantity %>
           </td>
           <td>
-            <%= orderList.Seller_id %>
+            <%= order.Seller_id %>
           </td>
           <td>
-            <%= orderList.Buyer_id %>
+            <%= order.Buyer_id %>
           </td>
           <td>
             <input type="button" class="deleteBtn"  value="Delete">

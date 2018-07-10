@@ -20,9 +20,9 @@ exports.insert = function (req, res) {
     })
 };
 exports.list = function (req, res) {
-    sequelize.query('select o.Quantity, o.ItemId, o.Buyer_id, o.Order_id, i.name as Item_Name, i.price as Item_Price, i.seller_id as Seller_id from Orders o join Items i on o.ItemId = i.id',{ model: Order })
+    sequelize.query('select o.Quantity, i.id as ItemId, o.Buyer_id, o.Order_id, i.name as Item_Name, i.price as Item_Price, i.seller_id as Seller_id from Orders o join Items i on o.ItemId = i.id',{ model: Order, raw:true })
     .then((orderAndItem) => {
-        // console.log(order)
+         console.log(orderAndItem)
         res.render('orders', {
             title:"Order Management",
             orderList: orderAndItem,
