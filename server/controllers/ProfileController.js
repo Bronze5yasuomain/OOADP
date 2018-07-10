@@ -8,9 +8,9 @@ exports.insert = function (req, res) {
         userId : req.body.userId,
         name: req.body.name,
         email: req.body.email,
-        password: req.body.password,
+        gender: req.body.gender,
         address: req.body.address,
-        gender: req.body.gender
+        password: req.body.password,
     }
     ProfileModel.create(profileData).then((newRecord, created) => {
         if (!newRecord) {
@@ -24,7 +24,7 @@ exports.insert = function (req, res) {
 
 //List one specific user record from database
 exports.editRecord = function (req, res) {
-    var record_num = req.params.id;
+    var record_num = req.user.id;
     ProfileModel.findById(record_num).then(function (userRecord) {
         res.render('editprofile', {
             title: "Edit Profile Page",
@@ -40,14 +40,14 @@ exports.editRecord = function (req, res) {
 
 //Update user record in database
 exports.update = function (req, res) {
-    var record_num = req.params.id;
+    var record_num = req.user.id;
     var updateData = {
         userId : req.body.userId,
         name: req.body.name,
         email: req.body.email,
-        password: req.body.password,
+        gender: req.body.gender,
         address: req.body.address,
-        gender: req.body.gender
+        password: req.body.password
     }
     ProfileModel.update(updateData, { where: { id: record_num } }).then((updatedRecord) => {
         if (!updatedRecord || updatedRecord == 0) {
@@ -65,9 +65,3 @@ exports.hasAuthorization = function (req, res, next) {
 		return next();
 	res.redirect('/login');
 }
-
-exports.show = function(req, res) {
-	res.render('editprofile', {
-		user: req.user
-	});
-};
