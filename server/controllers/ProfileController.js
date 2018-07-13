@@ -2,26 +2,6 @@ var ProfileModel = require('../models/profile');
 var myDatabase = require('./database');
 var sequelize = myDatabase.sequelize;
 
-// Add a new user record to database
-exports.insert = function (req, res) {
-    var profileData = {
-        userId : req.body.userId,
-        name: req.body.name,
-        email: req.body.email,
-        gender: req.body.gender,
-        address: req.body.address,
-        password: req.body.password,
-    }
-    ProfileModel.create(profileData).then((newRecord, created) => {
-        if (!newRecord) {
-            return res.send(400, {
-                message: "error"
-            });
-        }
-        res.redirect('/profile');
-    })
-};
-
 //List one specific user record from database
 exports.editRecord = function (req, res) {
     var record_num = req.user.id;
