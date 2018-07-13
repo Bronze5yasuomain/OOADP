@@ -16,7 +16,7 @@ exports.success = function (req, res) {
             throw error;
         } else {
             console.log(JSON.stringify(payment));
-            res.send('Success');
+            res.end();
             }
     res.redirect('/browse') ;
         }
@@ -47,11 +47,11 @@ exports.create = function (req, res) {
 };
 
 exports.list = function(req, res) {
-    sequelize.query('select p.intent, p.payment_method, p.payment_id, p.order_id, p.currency, p.quantity, p.description, o.Order_id as Order_ID, o.ItemId as Item_ID from Payments p join Items i join Orders o on p.order_id = o.Order_id on o.ItemId = i.id   ', 
+    sequelize.query('select p.intent, p.payment_method, p.payment_id, o.Order_id as order_id, p.currency, p.quantity, p.description, o.Order_id as Order_ID from Payments p join Orders o on p.order_id = o.Order_id', 
     { model: executePayment})
     .then((executePayment) => {
         res.render('payment', {
-            title:"Payment Page",
+            title:'Payments Page',
             paymentList: executePayment,
             urlPath: req.protocol + "://" + req.get("host") + req.url
         });

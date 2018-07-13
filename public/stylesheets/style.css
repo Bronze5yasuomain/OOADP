@@ -10,6 +10,14 @@ body {
   /* Margin bottom by footer height */
   margin-bottom: 60px; }
 
+body {
+  padding-top: 60px;}
+
+body > .box {
+  padding-top: 50px;
+  width: 80%;
+  margin: auto; }
+
 body > .container {
   padding-top: 60px; }
 
