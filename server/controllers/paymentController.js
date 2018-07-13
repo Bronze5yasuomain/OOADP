@@ -28,9 +28,8 @@ exports.create = function (req, res) {
     var paymentData = {
         intent: req.body.intent,
         payment_method: req.body.payment_method,
-        item_id: req.body.item_id,
-        item: req.body.item,
-        price: req.body.price,
+        payment_id: req.body.payment_id,
+        order_id: req.body.order_id,
         currency: req.body.currency,
         quantity: req.body.quantity,
         description: req.body.description,
@@ -48,7 +47,7 @@ exports.create = function (req, res) {
 };
 
 exports.list = function(req, res) {
-    sequelize.query('select p.intent, p.payment_method, p.item_id, p.item, p.price, p.currency, p.quantity, p.description, from Payments p ', 
+    sequelize.query('select p.intent, p.payment_method, p.payment_id, p.order_id, p.currency, p.quantity, p.description, o.Order_id as Order_ID, o.ItemId as Item_ID from Payments p join Items i join Orders o on p.order_id = o.Order_id on o.ItemId = i.id   ', 
     { model: executePayment})
     .then((executePayment) => {
         res.render('payment', {

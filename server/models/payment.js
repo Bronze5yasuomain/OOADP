@@ -10,18 +10,17 @@ const executePayment = sequelize.define('Payments', {
     payment_method: {
         type: Sequelize.STRING,
     },
-    payer_id: {
-        type: Sequelize.STRING,
-    },
-    item_id: {
-        type: Sequelize.STRING,
+    payment_id: {
+        type: Sequelize.INTEGER,
         primaryKey: true,
+        autoIncrement: true,
     },
-    item: {
-        type: Sequelize.STRING,
-    },
-    price: {
-        type: Sequelize.INTEGER
+    order_id: {
+        type: Sequelize.INTEGER,
+        references: {
+            model: 'Orders',
+            key: 'Order_id'
+        }
     },
     currency: {
         type: Sequelize.STRING
@@ -46,10 +45,8 @@ executePayment.sync({force: false, logging:console.log}).then(()=>{
     return executePayment.upsert({
         intent: 'sale',
         payment_method: 'paypal',
-        payer_id: 'weixiang54@ymail.com',
-        item_id: 'rsh',
-        item: 'Red Sox Hat',
-        price: '25',
+        payment_id: 1,
+        order_id: 1,
         currency: 'SGD',
         quantity: 1,
         description:'This is the payment description',

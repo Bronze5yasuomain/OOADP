@@ -6,22 +6,22 @@
 </head>
 <body>
     <% include ../partials/headerafterlogin %>
-        <% paymentList.forEach(function(paymentList) { %>
+    <% paymentList.forEach(function(payment) { %>
+        <fieldset class="form-group">
+            <label for="inputintent"></label>
+            <%= paymentList.intent %>
+        </fieldset>
         <fieldset class="form-group">
             <label for="inputPaymentMethod"></label>
             <%= paymentList.payment_method %>
         </fieldset>
         <fieldset class="form-group">
             <label for="inputId"></label>
-            <%= paymentList.item_id %>
+            <%= paymentList.payment_id %>
         </fieldset>
         <fieldset class="form-group">
             <label for="inputItem"></label>
-            <%= paymentList.item %>
-        </fieldset>
-        <fieldset class="form-group">
-            <label for="inputPrice"></label>
-            <%= paymentList.price %>
+            <%= paymentList.order_id %>
         </fieldset>
         <fieldset class="form-group">
             <label for="inputCurrency"></label>

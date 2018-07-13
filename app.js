@@ -86,7 +86,7 @@ app.get('/profile', auth.isLoggedIn, auth.profile);
 // Payment route
 var paymentController = require("./server/controllers/paymentController")
 app.get("/payment", paymentController.hasAuthorization, paymentController.list);
-app.post("/payment", paymentController.hasAuthorization, paymentController.create);
+// app.post("/payment", paymentController.hasAuthorization, paymentController.create);
 
 app.get('/success', paymentController.hasAuthorization, paymentController.success);
 

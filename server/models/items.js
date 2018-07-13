@@ -3,14 +3,15 @@ var sequelize = myDatabase.sequelize;
 var Sequelize = myDatabase.Sequelize;
 
 const ItemModel = sequelize.define('Items',{
-    name:{
-       type: Sequelize.STRING,
-    },
+   
     id:{
         type: Sequelize.INTEGER,
         primaryKey: true,
         autoIncrement:true,
 
+    },
+    name: {
+        type: Sequelize.STRING
     },
     price:{
         type: Sequelize.DOUBLE,
@@ -25,7 +26,7 @@ const ItemModel = sequelize.define('Items',{
     },
     category:{
         type: Sequelize.STRING,
-    },
+    }
     // quantity_left:{
     //     type: Sequelize.INTEGER,
     //     allowNull: false
@@ -38,7 +39,7 @@ const ItemModel = sequelize.define('Items',{
     //     }
     // }
 });
-module.exports = sequelize.model('Items', ItemModel);
+
 ItemModel.sync({ force:false, logging:console.log }).then(() => {
     console.log("Items synced");
     ItemModel.upsert({
@@ -47,9 +48,9 @@ ItemModel.sync({ force:false, logging:console.log }).then(() => {
         price:870.00,
         description:"5.5 inch Retina Display, A10 Fusion Chip",
         condition:"New",
-        category:"Electronics",
-        quantity_left: 2,
-        seller_id:1
+        category:"Electronics"
+        // quantity_left: "2",
+        // seller_id:"2",
 
     });
 //     console.log("Items synced");
@@ -63,3 +64,5 @@ ItemModel.sync({ force:false, logging:console.log }).then(() => {
 
 //     });
 });
+
+module.exports = sequelize.model('Items', ItemModel);
