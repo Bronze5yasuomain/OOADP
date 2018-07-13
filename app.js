@@ -121,13 +121,10 @@ var orderController = require("./server/controllers/orderController")
 app.get("/orders", orderController.list);
 
 var ProfileController = require("./server/controllers/ProfileController")
-app.post("/editprofile", ProfileController.insert);
+//read
 app.get("/editprofile", ProfileController.editRecord);
+//write
 app.post("/editprofile", ProfileController.update);
-
-//app.get("/editprofile", function(req, res) {
-//    res.render('editprofile', { title: 'Edit Profile Page' , urlPath: '/editprofile'});
-//})
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
