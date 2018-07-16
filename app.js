@@ -85,15 +85,16 @@ app.get('/profile', auth.isLoggedIn, auth.profile);
 
 // Payment route
 var paymentController = require("./server/controllers/paymentController")
-app.get("/payment", paymentController.hasAuthorization, paymentController.list);
-app.post("/payment", paymentController.hasAuthorization, paymentController.create);
+app.get("/payment", paymentController.hasAuthorization, paymentController.list) 
 
-app.get('/success', paymentController.hasAuthorization, paymentController.success);
+// app.post("/payment", paymentController.hasAuthorization, paymentController.create);
 
-app.get('/cancel', function (req, res) {
-    req.cancel();
-    res.send('Transaction is cancelled')
-})
+// app.get('/success', paymentController.hasAuthorization, paymentController.success);
+
+// app.get('/cancel', function (req, res) {
+//     req.cancel();
+//     res.send('Transaction is cancelled')
+// })
 
 // Logout Page
 app.get('/logout', function (req, res) {

@@ -6,36 +6,35 @@
 </head>
 <body>
     <% include ../partials/headerafterlogin %>
-        <% paymentList.forEach(function(paymentList) { %>
-        <fieldset class="form-group">
-            <label for="inputPaymentMethod"></label>
-            <%= paymentList.payment_method %>
-        </fieldset>
-        <fieldset class="form-group">
-            <label for="inputId"></label>
-            <%= paymentList.item_id %>
-        </fieldset>
-        <fieldset class="form-group">
-            <label for="inputItem"></label>
-            <%= paymentList.item %>
-        </fieldset>
-        <fieldset class="form-group">
-            <label for="inputPrice"></label>
-            <%= paymentList.price %>
-        </fieldset>
-        <fieldset class="form-group">
-            <label for="inputCurrency"></label>
-            <%= paymentList.currency %>
-        </fieldset>
-        <fieldset>
-            <label for="inputQuantity"></label>
-            <%= paymentList.quantity %>
-        </fieldset>
-        <fieldset class="form-group">
-            <label for="inputDescription"></label>
-            <%= paymentList.description %>
-        </fieldset>
-        <input type = "submit" value = "Buy">
+    <h1>Payment Details</h1>
+    <div class="box">
+    <form method = "GET" action="">
+        <% paymentList.forEach(function(payment) { %>
+            <label name="intent">Intent:</label>
+            <%= payment.intent %>
+            <br><br>
+            <label name="payment_method">Payment Method:</label>
+            <%= payment.payment_method %>
+            <br><br>
+            <label name="payment_id">Payment ID:</label>
+            <%= payment.payment_id %>
+            <br><br>
+            <label name="order_id">Order ID:</label>
+            <%= payment.order_id %>
+            <br><br>
+            <label name="currency">Currency:</label>
+            <%= payment.currency %>
+            <br><br>
+            <label name="quantity">Quantity:</label>
+            <%= payment.quantity %>
+            <br><br>
+            <label name="description">Description:</label>
+            <%= payment.description %>
+            <br><br><br><br>
+            <% }) %>
+            <input type = "submit" value = "Buy">
+    </form>
+</div>
 
     <% include ../partials/footer %>
     <% include ../partials/javascript %>
