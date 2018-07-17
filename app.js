@@ -111,8 +111,8 @@ module.exports = app;
 //     console.log('http server listening on port ' + server.address().port);
 // });
 
-var itemsController = require("./server/controllers/itemsController")
-app.get("/item", itemsController.list);
+// var itemsController = require("./server/controllers/itemsController")
+// app.get("/item", itemsController.list);
 // app.get("/edit/:id", itemsController.editRecord)
 // app.post("/new", itemsController.insert);
 // app.post("/edit/:id", itemsController.update);

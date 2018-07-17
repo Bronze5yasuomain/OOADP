@@ -26,18 +26,18 @@ const ItemModel = sequelize.define('Items',{
     },
     category:{
         type: Sequelize.STRING,
+    },
+    quantity_left:{
+        type: Sequelize.INTEGER,
+        allowNull: false
+    },
+    seller_id:{
+        type: Sequelize.INTEGER,
+        references:{
+            model: 'Users',
+            key: 'id'
+        }
     }
-    // quantity_left:{
-    //     type: Sequelize.INTEGER,
-    //     allowNull: false
-    // },
-    // seller_id:{
-    //     type: Sequelize.INTEGER,
-    //     references:{
-    //         model: 'Users',
-    //         key: 'id'
-    //     }
-    // }
 });
 
 ItemModel.sync({ force:false, logging:console.log }).then(() => {
@@ -48,9 +48,9 @@ ItemModel.sync({ force:false, logging:console.log }).then(() => {
         price:870.00,
         description:"5.5 inch Retina Display, A10 Fusion Chip",
         condition:"New",
-        category:"Electronics"
-        // quantity_left: "2",
-        // seller_id:"2",
+        category:"Electronics",
+        quantity_left: "2",
+        seller_id:"2",
 
     });
 //     console.log("Items synced");

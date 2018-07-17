@@ -47,7 +47,7 @@ exports.create = function (req, res) {
 };
 
 exports.list = function(req, res) {
-    sequelize.query('select p.intent, p.payment_method, p.payment_id, o.Order_id as order_id, p.currency, p.quantity, p.description, o.Order_id as Order_ID from Payments p join Orders o on p.order_id = o.Order_id', 
+    sequelize.query('select p.intent, p.payment_method, p.payment_id, o.Order_id as order_id, p.currency, o.Quantity as quantity, p.description, from Payments p join Orders o on p.order_id = o.Order_id', 
     { model: executePayment})
     .then((executePayment) => {
         res.render('payment', {

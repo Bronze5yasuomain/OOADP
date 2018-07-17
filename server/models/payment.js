@@ -25,9 +25,6 @@ const executePayment = sequelize.define('Payments', {
     currency: {
         type: Sequelize.STRING
     },
-    quantity: {
-        type: Sequelize.INTEGER
-    },
     description: {
         type: Sequelize.STRING
     },
@@ -48,7 +45,6 @@ executePayment.sync({force: false, logging:console.log}).then(()=>{
         payment_id: 1,
         order_id: 1,
         currency: 'SGD',
-        quantity: 1,
         description:'This is the payment description',
     })
 });
