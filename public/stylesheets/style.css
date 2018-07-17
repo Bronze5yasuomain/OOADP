@@ -11,13 +11,16 @@ body {
   margin-bottom: 60px; }
 
 body {
-  padding-top: 80px;}
+  padding-top: 60px;}
 
+     
 body > .box {
+ padding-top: 50px;
+  width: 80%;
   padding-top: 40px;
   width: 90%;
-  margin: auto; }
- 
+ margin: auto; }
+
 body > .container {
   padding-top: 60px; }
 

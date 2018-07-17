@@ -33,6 +33,7 @@ exports.create = function (req, res) {
         currency: req.body.currency,
         quantity: req.body.quantity,
         description: req.body.description,
+        price: req.body.price,
     }
 
     // Save to database
@@ -47,11 +48,11 @@ exports.create = function (req, res) {
 };
 
 exports.list = function(req, res) {
-    sequelize.query('select p.intent, p.payment_method, p.payment_id, o.Order_id as order_id, p.currency, p.quantity, p.description, o.Order_id as Order_ID from Payments p join Orders o on p.order_id = o.Order_id', 
+    sequelize.query('select p.intent, p.payment_method, p.payment_id, o.Order_id as order_id, p.currency, p.quantity, p.description, p.price, o.Order_id as Order_ID from Payments p join Orders o on p.order_id = o.Order_id', 
     { model: executePayment})
     .then((executePayment) => {
         res.render('payment', {
-            title:'Payments Page',
+            title:'Payments',
             paymentList: executePayment,
             urlPath: req.protocol + "://" + req.get("host") + req.url
         });
@@ -63,7 +64,6 @@ exports.list = function(req, res) {
 };
 
 // exports.editRecord
-// exports.update
 // exports.delete
 
 // Payment authorization middleware

@@ -31,6 +31,9 @@ const executePayment = sequelize.define('Payments', {
     description: {
         type: Sequelize.STRING
     },
+    price: {
+        type: Sequelize.INTEGER
+    },
 });
 
 

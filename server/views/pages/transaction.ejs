@@ -1,0 +1,38 @@
+!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <% include ../partials/stylesheet %>
+</head>
+<body>
+    <% include ../partials/headerafterlogin %>
+    <h1>Add Payments Details</h1>
+    <div class="box">
+    <form method = "GET" action="">
+        <div class = "modal-body">
+            <fieldset>
+                <label for="intent">Enter intent of sale:</label>
+                <input type="text" id="intent" name="updateintent" class="form-control" placeholder="intent" required="true" value="<%= transaction.updateintent%>" >
+            </fieldset>
+            <fieldset>
+                <label for="intent">Enter Payment Method:</label>
+                <input type="text" id="payment_method" name="updatepayment_method" class="form-control" placeholder="payment_method" required="true" value="<%= transaction.updatepayment_method%>" >
+            </fieldset>
+            <fieldset>
+                <label for="intent">Enter Payment ID:</label>
+                <input type="text" id="payment_id" name="updatepayment_id" class="form-control" placeholder="payment_method" required="true" value="<%= transaction.updatepayment_method%>" >
+            </fieldset>  
+            <fieldset>
+                <label for="intent">Enter Order ID:</label>
+                <input type="text" id="payment_method" name="updatepayment_method" class="form-control" placeholder="payment_method" required="true" value="<%= transaction.updatepayment_method%>" >
+            </fieldset>
+            <fieldset>
+                <label for="intent">Enter Payment Method:</label>
+                <input type="text" id="payment_method" name="updatepayment_method" class="form-control" placeholder="payment_method" required="true" value="<%= transaction.updatepayment_method%>" >
+            </fieldset>
+            <fieldset>
+                <label for="intent">Enter Payment Method:</label>
+                <input type="text" id="payment_method" name="updatepayment_method" class="form-control" placeholder="payment_method" required="true" value="<%= transaction.updatepayment_method%>" >
+            </fieldset>
+                    
+        </div>
