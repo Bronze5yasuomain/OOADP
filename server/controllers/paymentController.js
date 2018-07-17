@@ -33,6 +33,7 @@ exports.create = function (req, res) {
         currency: req.body.currency,
         quantity: req.body.quantity,
         description: req.body.description,
+        price: req.body.price,
     }
 
     // Save to database
@@ -51,7 +52,7 @@ exports.list = function(req, res) {
     { model: executePayment})
     .then((executePayment) => {
         res.render('payment', {
-            title:'Payments Page',
+            title:'Payments',
             paymentList: executePayment,
             urlPath: req.protocol + "://" + req.get("host") + req.url
         });
@@ -63,7 +64,6 @@ exports.list = function(req, res) {
 };
 
 // exports.editRecord
-// exports.update
 // exports.delete
 
 // Payment authorization middleware
