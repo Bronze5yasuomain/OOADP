@@ -18,16 +18,16 @@ const Users = sequelize.define('Users', {
     password: {
         type: Sequelize.STRING
     },
-     address: {
-         type: Sequelize.STRING
+    address: {
+        type: Sequelize.STRING
     },
-     gender: {
-         type: Sequelize.STRING
+    gender: {
+        type: Sequelize.STRING
     },
-     account_type: {
-         type: Sequelize.STRING,
-         allowNull: false,
-         defaultValue: "standard"
+    account_type: {
+        type: Sequelize.STRING,
+        allowNull: false,
+        defaultValue: "standard"
     }
 });
 
@@ -41,6 +41,7 @@ Users.sync({force: false, logging:console.log}).then(()=>{
         password: '1234',
         address: 'Blk 170 Jurong West Street 97, #18-30',
         gender: 'Male',
+        account_type: '',
     })
 });
 

@@ -43,6 +43,30 @@ exports.list = function(req, res) {
     })
 };
 
+exports.editRecord = function(req, res) {
+    var record_num = req.params.id;
+    executeTransaction.findById(record_num).then(function (transactionRecord) {
+        res.render('editRecord', {
+            title: "Edit Transactions Record",
+            item: transactionRecord,
+            hostPath: req.protocol + "://" + req.get("host")
+        });
+    });
+};
+
+exports.delete = function(req, res) {
+    var record_num = req.params.id;
+    console.log("deleting" + record_num);
+    executeTransaction.destroy({ where: { id: record_num} }).then((deletedRecord) => {
+        if (!deletedRecord) {
+            return res.send(400, {
+                message: "error"
+            });
+        }
+        res.status(200).send({ message: "Deleted transaction record:" + record_num });
+    });
+}
+
 // Payment authorization middleware
 exports.hasAuthorization = function (req, res, next) {
 	if (req.isAuthenticated())

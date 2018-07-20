@@ -15,24 +15,65 @@
                 <input type="text" id="intent" name="updateintent" class="form-control" placeholder="intent" required="true" value="<%= transaction.updateintent%>" >
             </fieldset>
             <fieldset>
-                <label for="intent">Enter Payment Method:</label>
+                <label for="payment_method">Enter Payment Method:</label>
                 <input type="text" id="payment_method" name="updatepayment_method" class="form-control" placeholder="payment_method" required="true" value="<%= transaction.updatepayment_method%>" >
             </fieldset>
             <fieldset>
-                <label for="intent">Enter Payment ID:</label>
-                <input type="text" id="payment_id" name="updatepayment_id" class="form-control" placeholder="payment_method" required="true" value="<%= transaction.updatepayment_method%>" >
+                <label for="payment_id">Enter Payment ID:</label>
+                <input type="text" id="payment_id" name="updatepayment_id" class="form-control" placeholder="payment_id" required="true" value="<%= transaction.updatepayment_id%>" >
             </fieldset>  
             <fieldset>
-                <label for="intent">Enter Order ID:</label>
-                <input type="text" id="payment_method" name="updatepayment_method" class="form-control" placeholder="payment_method" required="true" value="<%= transaction.updatepayment_method%>" >
+                <label for="order_id">Enter Order ID:</label>
+                <input type="text" id="order_id" name="updateorder_id" class="form-control" placeholder="order_id" required="true" value="<%= transaction.updateorder_id%>" >
             </fieldset>
             <fieldset>
-                <label for="intent">Enter Payment Method:</label>
-                <input type="text" id="payment_method" name="updatepayment_method" class="form-control" placeholder="payment_method" required="true" value="<%= transaction.updatepayment_method%>" >
+                <label for="currency">Enter Currency:</label>
+                <input type="text" id="currency" name="updatecurrency" class="form-control" placeholder="currency" required="true" value="<%= transaction.updatecurrency%>" >
             </fieldset>
             <fieldset>
-                <label for="intent">Enter Payment Method:</label>
-                <input type="text" id="payment_method" name="updatepayment_method" class="form-control" placeholder="payment_method" required="true" value="<%= transaction.updatepayment_method%>" >
+                <label for="quantity">Enter Quantity:</label>
+                <input type="text" id="quantity" name="updatequantity" class="form-control" placeholder="quantity" required="true" value="<%= transaction.updatequantity%>" >
             </fieldset>
-                    
+            <fieldset>
+                <label for="intent">Enter Description:</label>
+                <input type="text" id="description" name="updatedescription" class="form-control" placeholder="description" required="true" value="<%= transaction.updatedescription%>" >
+            </fieldset>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary" onclick=saveDetails()>Save Changes</button>
+                <button type="submit" class="btn btn-primary" onclick=discardChanges()>Cancel</button>
+            </div>
+            <script>
+                function saveDetails() {
+                    var url = "<%=hostPath%>/transaction/<%=updatepayment_id%>";
+                    var newValues = {
+                        updateintent: $("#intent").val(),
+                        updatepayment_method: $("#payment_method").val(),
+                        updatepayment_id: $("#payment_id").val(),
+                        updateorder_id: $("#order_id").val(),
+                        updatecurrency: $("currency").val(),
+                        updatequantity: $("quantity").val(),
+                        updatedescription: $("description").val()
+                    }
+                    $.ajax({
+                        url: url,
+                        type: "POST",
+                        data: JSON.stringify(newValues),
+                        dataType: "json",
+                        contentType: "application/json",
+                        success: function(result){
+                            alert("Records updated successfully");
+                            location.href = "<%=hostPath%>"
+                        },
+                        error: function(result){
+                            alert("Error updating records")
+                            discardChanges();
+                        }
+                    })
+                }
+
+                function discardChanges() {
+                    location.href = "<%=hostPath%>"
+                }
+                
+            </script>
         </div>
