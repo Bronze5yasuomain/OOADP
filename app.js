@@ -6,6 +6,10 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 const ejs = require('ejs'); 
 
+// import multer
+var multer = require('multer');
+var upload = multer({ dest:'./public/uploads', limits: {fileSize: 1500000, files:1} });
+
 // Import home controller
 var index = require('./server/controllers/index');
 // Import login controller
