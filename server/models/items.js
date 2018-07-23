@@ -8,6 +8,10 @@ const ItemModel = sequelize.define('Items',{
         type: Sequelize.INTEGER,
         primaryKey: true,
         autoIncrement:true,
+        references: {
+            model: 'Orders',
+            key: 'Order_id'
+        }
 
     },
     name: {
