@@ -6,6 +6,10 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 const ejs = require('ejs'); 
 
+// import multer
+var multer = require('multer');
+var upload = multer({ dest:'./public/uploads', limits: {fileSize: 1500000, files:1} });
+
 // Import home controller
 var index = require('./server/controllers/index');
 // Import login controller
@@ -81,7 +85,12 @@ app.post('/signup', passport.authenticate('local-signup', {
     failureFlash: true
 }));
 
-app.get('/profile', auth.isLoggedIn, auth.profile);
+// Import listings controller
+var listings = require('./server/controllers/listingsController');
+//app.get('/profile',  auth.profile);
+app.get('/profile', listings.hasAuthorization, listings.show);
+app.post('/profile', listings.hasAuthorization, upload.single('image'), listings.uploadImage);
+//app.get('/profile', auth.isLoggedIn, auth.profile);
 
 // Payment route
 var paymentController = require("./server/controllers/paymentController")
