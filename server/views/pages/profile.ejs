@@ -66,13 +66,22 @@
     </div>
 <br>
 <div class="second">
-    <button class="tablink" onclick="openPage('Home', this, '#777;')">Listings</button>
-    <button class="tablink" onclick="openPage('News', this, '#777;')" id="defaultOpen">Reviews</button>
+    <button class="tablink" onclick="openPage('Home', this, '#777;')" id="defaultOpen">Listings</button>
+    <button class="tablink" onclick="openPage('News', this, '#777;')">Reviews</button>
     <button class="tablink" onclick="openPage('Contact', this, '#777;')">Favourites</button>
 
     <div id="Home" class="tabcontent">
-        <h3>Listings</h3>
-        <p>No listings yet.</p>
+        <div class="row">
+            <% listings.forEach(function(listings){ %>
+                <div class="col-lg-4">
+                    <figure class="figure">
+                        <img src="images/<%= listings.imageName %>" class="figure-img img-fluid img-rounded" alt="<%= listings.imageName %>">
+                        <figcaption class="figure-caption"><%= listings.title %></figcaption>
+                        <small>Upload by: <%= listings.user_id %></small>
+                    </figure>
+                </div>
+            <% }); %>
+        </div>
     </div>
 
     <div id="News" class="tabcontent">

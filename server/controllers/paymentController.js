@@ -63,8 +63,6 @@ exports.list = function(req, res) {
     })
 };
 
-// exports.editRecord
-// exports.delete
 
 // Payment authorization middleware
 exports.hasAuthorization = function (req, res, next) {

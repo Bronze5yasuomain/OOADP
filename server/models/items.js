@@ -8,6 +8,10 @@ const ItemModel = sequelize.define('Items',{
         type: Sequelize.INTEGER,
         primaryKey: true,
         autoIncrement:true,
+        references: {
+            model: 'Orders',
+            key: 'Order_id'
+        }
 
     },
     name: {
@@ -50,7 +54,7 @@ ItemModel.sync({ force:false, logging:console.log }).then(() => {
         condition:"New",
         category:"Electronics",
         quantity_left: "2",
-        seller_id:"2",
+        seller_id:"1",
 
     });
 //     console.log("Items synced");
