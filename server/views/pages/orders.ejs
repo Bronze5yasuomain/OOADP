@@ -2,12 +2,14 @@
 <html>
 <head>
     <title><%= title %></title>
+    <% include ../partials/stylesheet %>
+    <% include ../partials/headerafterlogin %>
 
 </head>
 <body>
    
     
-<table class="table" style="padding-top: 300px">
+<table class="table" style="margin-top: 50px">
     <thead>
       <tr>
         <th>Order ID</th>
@@ -66,5 +68,7 @@
       });
     });
   </script>
+  <% include ../partials/footer %>
+  <% include ../partials/javascript %>
 </body>
 </html>

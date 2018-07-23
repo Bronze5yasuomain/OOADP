@@ -35,7 +35,7 @@ const Order = sequelize.define('Orders',{
 
 Order.sync({ force:false, logging:console.log }).then(() => {
     console.log("Orders synced");
-    Order.upsert({
+    return Order.upsert({
         ItemId:1,
         Quantity:1,
         Buyer_id:1,
