@@ -33,7 +33,7 @@ const Images = sequelize.define('Images', {
 });
 
 // force: true will drop the table if it already exists
-Images.sync({ force: true, logging: console.log}).then(() => {
+Images.sync({ force: false, logging: console.log}).then(() => {
     // Table created
     console.log("images table synced");
 });
