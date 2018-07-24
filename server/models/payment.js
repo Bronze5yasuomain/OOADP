@@ -49,6 +49,7 @@ executePayment.sync({force: false, logging:console.log}).then(()=>{
         order_id: 1,
         currency: 'SGD',
         description:'This is the payment description',
+        price: 1,
     })
 });
  

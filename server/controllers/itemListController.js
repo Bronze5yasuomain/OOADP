@@ -1,5 +1,5 @@
 var ItemModel = require('../models/items');
-var myDatabase = require('./database');
+var myDatabase = require('../controllers/database');
 var sequelize = myDatabase.sequelize;
 
 //image shit modules
@@ -14,7 +14,7 @@ var Images = require('../models/images')
 
 exports.list=function(req, res){
     ItemModel.findAll({
-        attributes: ['name','price']
+        attributes: ['id','name','price','description','condition','category', 'quantity_left', 'seller_id']
     }).then(function (items) {
         res.render('index', {
             title:"Item List",

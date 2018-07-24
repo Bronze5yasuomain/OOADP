@@ -1,5 +1,5 @@
 var ProfileModel = require('../models/profile');
-var myDatabase = require('./database');
+var myDatabase = require('../controllers/database');
 var sequelize = myDatabase.sequelize;
 
 //List one specific user record from database

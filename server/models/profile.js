@@ -39,9 +39,9 @@ Users.sync({force: false, logging:console.log}).then(()=>{
         name: 'Ben',
         email: 'a@b.com',
         password: '1234',
-        address: 'Blk 170 Jurong West Street 97, #18-30',
+        address: 'Blk 170 Jurong West Street 97, 18-30',
         gender: 'Male',
-        account_type: '',
+        account_type: 'default',
     })
 });
 

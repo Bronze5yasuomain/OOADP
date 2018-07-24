@@ -1,5 +1,5 @@
 var ItemModel = require('../models/items');
-var myDatabase = require('./database');
+var myDatabase = require('../controllers/database');
 var sequelize = myDatabase.sequelize;
 
 exports.insert = function (req,res) {
@@ -25,7 +25,7 @@ exports.insert = function (req,res) {
 
 exports.list=function(req, res){
     ItemModel.findAll({
-        attributes: ['id','name','price','description','condition','category']
+        attributes: ['id','name','price','description','condition','category', 'quantity_left', 'seller_id']
     }).then(function (items) {
         res.render('index', {
             title:"Item List",
@@ -85,6 +85,6 @@ exports.delete = function (req, res){
                 message: "error"
             });
         }
-        res.status(200).send({ message: "Deleted jitem record:" + record_num});
+        res.status(200).send({ message: "Deleted item record:" + record_num});
     });
 }

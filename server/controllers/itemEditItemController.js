@@ -1,5 +1,5 @@
 var ItemModel = require('../models/items');
-var myDatabase = require('./database');
+var myDatabase = require('../controllers/database');
 var sequelize = myDatabase.sequelize;
 
 exports.editRecord = function (req, res) {
