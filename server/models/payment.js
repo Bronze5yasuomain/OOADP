@@ -42,14 +42,6 @@ paypal.configure({
     
 executePayment.sync({force: false, logging:console.log}).then(()=>{
     console.log("Payment table synced");
-    return executePayment.upsert({
-        intent: 'sale',
-        payment_method: 'paypal',
-        payment_id: 1,
-        order_id: 1,
-        currency: 'SGD',
-        description:'This is the payment description',
-    })
 });
  
 module.exports = sequelize.model('Payments', executePayment);

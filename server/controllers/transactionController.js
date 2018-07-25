@@ -28,7 +28,7 @@ exports.update = function(req, res) {
 }
 
 exports.list = function(req, res) {
-    sequelize.query('select p.intent, p.payment_method, p.payment_id, o.Order_id as order_id, p.currency, p.quantity, p.description, p.price from Payments p join Orders o on p.order_id = o.Order_id', 
+    sequelize.query('select p.updateintent, p.updatepayment_method, p.updatepayment_id, o.Order_id as updateorder_id, p.updatecurrency, p.updatequantity, p.updatedescription, p.updateprice from Payments p join Orders o on p.updateorder_id = o.Order_id', 
     { model: executeTransaction})
     .then((executeTransaction) => {
         res.render('transaction', {

@@ -21,7 +21,7 @@ exports.success = function (req, res) {
     res.redirect('/browse') ;
         }
     )} 
-
+                                        
 // Create a new payment record into the database
 exports.create = function (req, res) {
     // Create a new instance of the Payments model with request body
@@ -48,7 +48,7 @@ exports.create = function (req, res) {
 };
 
 exports.list = function(req, res) {
-    sequelize.query('select p.intent, p.payment_method, p.payment_id, o.Order_id as order_id, p.currency, o.Quantity as quantity, p.description, from Payments p join Orders o on p.order_id = o.Order_id', 
+    sequelize.query('select p.intent, p.payment_method, p.payment_id, o.Order_id as order_id, p.currency, o.Quantity as quantity, p.description from Payments p join Orders o on p.order_id = o.Order_id', 
     { model: executePayment, raw:true})
     .then((executePayment) => {
         res.render('payment', {
