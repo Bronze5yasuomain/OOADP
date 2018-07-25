@@ -25,11 +25,7 @@ const Order = sequelize.define('Orders',{
         type: Sequelize.INTEGER,
         autoIncrement: true,
         primaryKey: true,
-        references: {
-            model: 'Payments',
-            key: 'payment_id'
-        }
-
+        
     }
 });
 

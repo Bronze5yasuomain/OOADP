@@ -8,11 +8,7 @@ const ItemModel = sequelize.define('Items',{
         type: Sequelize.INTEGER,
         primaryKey: true,
         autoIncrement:true,
-        references: {
-            model: 'Orders',
-            key: 'Order_id'
-        }
-
+        
     },
     name: {
         type: Sequelize.STRING
@@ -53,10 +49,13 @@ ItemModel.sync({ force:false, logging:console.log }).then(() => {
         description:"5.5 inch Retina Display, A10 Fusion Chip",
         condition:"New",
         category:"Electronics",
-        quantity_left: "2",
-        seller_id:"1",
+        quantity_left: 2,
+        seller_id: 1
 
     });
+});
+
+
 //     console.log("Items synced");
 //     ItemModel.upsert({
 //         id:2,
@@ -67,6 +66,6 @@ ItemModel.sync({ force:false, logging:console.log }).then(() => {
 //         category:"Electronics",
 
 //     });
-});
+
 
 module.exports = sequelize.model('Items', ItemModel);

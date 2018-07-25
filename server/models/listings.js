@@ -33,7 +33,7 @@ const Listings = sequelize.define('Listings', {
 });
 
 // force: true will drop the table if it already exists
-Listings.sync({ force: true, logging: console.log}).then(() => {
+Listings.sync({ force: false, logging: console.log}).then(() => {
     // Table created
     console.log("listings table synced");
 });

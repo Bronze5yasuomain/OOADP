@@ -1,6 +1,6 @@
 var Order = require('../models/order');
 var Item = require('../models/items');
-var myDatabase = require('./database');
+var myDatabase = require('../controllers/database');
 var sequelize = myDatabase.sequelize;
 
 exports.insert = function (req, res) {

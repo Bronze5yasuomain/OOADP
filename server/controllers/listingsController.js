@@ -6,7 +6,7 @@ var gravatar = require('gravatar');
 var IMAGE_TYPES = ['image/jpeg', 'image/jpg', 'image/png'];
 
 var Listings = require('../models/listings');
-var myDatabase = require('./database');
+var myDatabase = require('../controllers/database');
 var sequelize = myDatabase.sequelize;
 
 // Show images gallery
