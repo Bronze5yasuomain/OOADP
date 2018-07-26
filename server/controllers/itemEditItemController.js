@@ -17,6 +17,24 @@ exports.editRecord = function (req, res) {
     });
 };
 
+exports.update = function (req, res){
+    var record_num = req.params.id;
+    var updateData = {
+        studentId: req.body.studentId,
+        name: req.body.name,
+        group: req.body.group,
+        hobby: req.body.hobby
+    }
+    StudentModel.update(updateData, {where: { id: record_num}}).then((updatedRecord)=>{
+        if (!updatedRecord || updatedRecord == 0){
+            return res.send(400, {
+                    message: "error"
+            });
+        }
+        res.status(200).send({ message: "Updated student record:"+record_num});
+    })
+}
+
 // Item authorization middleware
 exports.hasAuthorization = function (req, res, next) {
 	if (req.isAuthenticated())
