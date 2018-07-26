@@ -99,7 +99,7 @@ app.get("/payment", paymentController.hasAuthorization, paymentController.list)
 // Transaction route
 var transactionController = require("./server/controllers/transactionController")
 app.get('/transaction', transactionController.hasAuthorization, transactionController.list);
-app.post("/transaction", transactionController.hasAuthorization, transactionController.update, transactionController.editRecord, transactionController.delete)
+app.post('/transaction', transactionController.hasAuthorization, transactionController.update, transactionController.editRecord, transactionController.delete)
 
 // app.get('/cancel', function (req, res) {
 //     req.cancel();
@@ -127,12 +127,11 @@ var itemListController = require("./server/controllers/itemListController")
 var itemViewIndividualController = require("./server/controllers/itemViewIndividualController")
 var itemsControllerExample = require("./server/controllers/itemsControllerExample")
 
-
-app.get("/browse", itemListController.list, itemViewIndividualController.list);
-app.get("/browse", itemEditItemController.editRecord)
-app.post("/browse", itemCreateItemController.insert, itemsControllerExample.insert);
-// app.post("/browse", itemsController.update);
-// app.delete("/browse", itemsController.delete); 
+app.get("/browse", itemListController.list, itemViewIndividualController.list, itemsControllerExample.list, itemCreateItemController.hasAuthorization);
+app.get("/browse", itemEditItemController.editRecord, itemsControllerExample.editRecord, itemEditItemController.hasAuthorization)
+app.post("/browse", itemCreateItemController.insert, itemsControllerExample.insert, itemListController.hasAuthorization);
+app.post("/browse", itemsControllerExample.update, itemViewIndividualController.hasAuthorization);
+app.delete("/browse", itemsControllerExample.delete, itemsControllerExample.hasAuthorization); 
 
 var orderController = require("./server/controllers/orderController")
 app.get("/orders", orderController.list);
