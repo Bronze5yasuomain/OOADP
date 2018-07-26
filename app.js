@@ -121,8 +121,13 @@ module.exports = app;
 //     console.log('http server listening on port ' + server.address().port);
 // });
 
-// var itemsController = require("./server/controllers/itemsController")
-// app.get("/item", itemsController.list);
+//item listing controller routes
+var itemCreateItemController = require("./server/controllers/itemCreateItemController")
+var itemEditItemController = require("./server/controllers/itemEditItemController")
+var itemslistController = require("./server/controllers/itemListController")
+var itemViewIndividualController = require("./server/controllers/itemViewIndividualController")
+
+app.get("/", itemsController.list);
 // app.get("/edit/:id", itemsController.editRecord)
 // app.post("/new", itemsController.insert);
 // app.post("/edit/:id", itemsController.update);

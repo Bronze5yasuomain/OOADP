@@ -3,13 +3,13 @@ var myDatabase = require('../controllers/database');
 var sequelize = myDatabase.sequelize;
 
 //image shit modules
-var fs = require('fs');
-var mime = require('mine');
-var gravatar = require('gravatar');
+//var fs = require('fs');
+//var mime = require('mine');
+//var gravatar = require('gravatar');
 //set image file types
-var IMAGE_TYPES = ['image/jpeg', 'image/jpg', 'image/png'];
+//var IMAGE_TYPES = ['image/jpeg', 'image/jpg', 'image/png'];
 
-var Images = require('../models/images')
+//var Images = require('../models/images')
 
 
 exports.list=function(req, res){
