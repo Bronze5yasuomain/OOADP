@@ -121,12 +121,18 @@ module.exports = app;
 //     console.log('http server listening on port ' + server.address().port);
 // });
 
-// var itemsController = require("./server/controllers/itemsController")
-// app.get("/item", itemsController.list);
-// app.get("/edit/:id", itemsController.editRecord)
-// app.post("/new", itemsController.insert);
-// app.post("/edit/:id", itemsController.update);
-// app.delete("/:id", itemsController.delete);
+var itemCreateItemController = require("./server/controllers/itemCreateItemController")
+var itemEditItemController = require("./server/controllers/itemEditItemController")
+var itemListController = require("./server/controllers/itemListController")
+var itemViewIndividualController = require("./server/controllers/itemViewIndividualController")
+var itemsControllerExample = require("./server/controllers/itemsControllerExample")
+
+
+app.get("/browse", itemListController.list, itemViewIndividualController.list);
+app.get("/browse", itemEditItemController.editRecord)
+app.post("/browse", itemCreateItemController.insert, itemsControllerExample.insert);
+// app.post("/browse", itemsController.update);
+// app.delete("/browse", itemsController.delete); 
 
 var orderController = require("./server/controllers/orderController")
 app.get("/orders", orderController.list);
@@ -136,7 +142,7 @@ var ProfileController = require("./server/controllers/ProfileController")
 app.get("/editprofile", ProfileController.editRecord);
 //write
 app.post("/editprofile", ProfileController.update);
-
+ 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
     var err = new Error('Not Found');
