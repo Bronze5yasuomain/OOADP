@@ -88,3 +88,10 @@ exports.delete = function (req, res){
         res.status(200).send({ message: "Deleted item record:" + record_num});
     });
 }
+
+// Item authorization middleware
+exports.hasAuthorization = function (req, res, next) {
+	if (req.isAuthenticated())
+		return next();
+	res.redirect('/login');
+}

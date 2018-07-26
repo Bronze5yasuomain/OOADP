@@ -2,6 +2,7 @@ var ItemModel = require('../models/items');
 var myDatabase = require('../controllers/database');
 var sequelize = myDatabase.sequelize;
 
+<<<<<<< HEAD
 //image shit modules
 //var fs = require('fs');
 //var mime = require('mine');
@@ -10,6 +11,17 @@ var sequelize = myDatabase.sequelize;
 //var IMAGE_TYPES = ['image/jpeg', 'image/jpg', 'image/png'];
 
 //var Images = require('../models/images')
+=======
+
+/* Ernest this block of codes causes errors
+// image shit modules
+// var fs = require('fs');
+// var mime = require('mine');
+// var gravatar = require('gravatar');
+// //set image file types
+// var IMAGE_TYPES = ['image/jpeg', 'image/jpg', 'image/png'];
+// var Images = require('../models/images') */
+>>>>>>> 2f5cad6491e5ae99aec43645b17e26ec4f145fc8
 
 
 exports.list=function(req, res){
@@ -27,3 +39,10 @@ exports.list=function(req, res){
         });
     });
 };
+
+// Item authorization middleware
+exports.hasAuthorization = function (req, res, next) {
+	if (req.isAuthenticated())
+		return next();
+	res.redirect('/login');
+}

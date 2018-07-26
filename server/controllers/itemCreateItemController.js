@@ -23,3 +23,10 @@ exports.insert = function (req,res) {
     })
 };
 
+// Item authorization middleware
+exports.hasAuthorization = function (req, res, next) {
+	if (req.isAuthenticated())
+		return next();
+	res.redirect('/login');
+}
+
