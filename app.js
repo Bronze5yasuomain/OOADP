@@ -128,11 +128,11 @@ var itemlistController = require("./server/controllers/itemListController")
 var itemViewIndividualController = require("./server/controllers/itemViewIndividualController")
 var itemDeleteItemController = require("./server/controllers/itemDeleteItemController")
 
-app.get("/", itemlistController.list);
-app.get("/edit/:id", itemEditItemController.editRecord)
-app.post("/new", itemCreateItemController.insert);
-app.post("/edit/:id", itemEditItemController.update);
-app.delete("/:id", itemDeleteItemController.delete);
+app.get("/browse", itemlistController.list, itemViewIndividualController.list, itemsControllerExample.list, itemCreateItemController.hasAuthorization);
+app.get("/browse", itemEditItemController.editRecord, itemsControllerExample.editRecord, itemEditItemController.hasAuthorization)
+app.post("/browse", itemCreateItemController.insert, itemsControllerExample.insert, itemListController.hasAuthorization);
+app.post("/browse", itemEditItemController.update, itemViewIndividualController.hasAuthorization);
+app.delete("/browse", itemDeleteItemController.delete, itemsControllerExample.hasAuthorization);
 
 var orderController = require("./server/controllers/orderController")
 app.get("/orders", orderController.list);
