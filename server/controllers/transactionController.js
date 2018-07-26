@@ -71,5 +71,5 @@ exports.delete = function(req, res) {
 exports.hasAuthorization = function (req, res, next) {
 	if (req.isAuthenticated())
 		return next();
-	res.redirect('/payment')
+	res.redirect('/transaction')
 };
