@@ -2,16 +2,6 @@ var ItemModel = require('../models/items');
 var myDatabase = require('../controllers/database');
 var sequelize = myDatabase.sequelize;
 
-<<<<<<< HEAD
-//image shit modules
-//var fs = require('fs');
-//var mime = require('mine');
-//var gravatar = require('gravatar');
-//set image file types
-//var IMAGE_TYPES = ['image/jpeg', 'image/jpg', 'image/png'];
-
-//var Images = require('../models/images')
-=======
 
 /* Ernest this block of codes causes errors
 // image shit modules
@@ -21,7 +11,6 @@ var sequelize = myDatabase.sequelize;
 // //set image file types
 // var IMAGE_TYPES = ['image/jpeg', 'image/jpg', 'image/png'];
 // var Images = require('../models/images') */
->>>>>>> 2f5cad6491e5ae99aec43645b17e26ec4f145fc8
 
 
 exports.list=function(req, res){

@@ -121,31 +121,18 @@ module.exports = app;
 //     console.log('http server listening on port ' + server.address().port);
 // });
 
-<<<<<<< HEAD
 //item listing controller routes
 var itemCreateItemController = require("./server/controllers/itemCreateItemController")
 var itemEditItemController = require("./server/controllers/itemEditItemController")
-var itemslistController = require("./server/controllers/itemListController")
+var itemlistController = require("./server/controllers/itemListController")
 var itemViewIndividualController = require("./server/controllers/itemViewIndividualController")
+var itemDeleteItemController = require("./server/controllers/itemDeleteItemController")
 
-app.get("/", itemsController.list);
-// app.get("/edit/:id", itemsController.editRecord)
-// app.post("/new", itemsController.insert);
-// app.post("/edit/:id", itemsController.update);
-// app.delete("/:id", itemsController.delete);
-=======
-var itemCreateItemController = require("./server/controllers/itemCreateItemController")
-var itemEditItemController = require("./server/controllers/itemEditItemController")
-var itemListController = require("./server/controllers/itemListController")
-var itemViewIndividualController = require("./server/controllers/itemViewIndividualController")
-var itemsControllerExample = require("./server/controllers/itemsControllerExample")
-
-app.get("/browse", itemListController.list, itemViewIndividualController.list, itemsControllerExample.list, itemCreateItemController.hasAuthorization);
-app.get("/browse", itemEditItemController.editRecord, itemsControllerExample.editRecord, itemEditItemController.hasAuthorization)
-app.post("/browse", itemCreateItemController.insert, itemsControllerExample.insert, itemListController.hasAuthorization);
-app.post("/browse", itemsControllerExample.update, itemViewIndividualController.hasAuthorization);
-app.delete("/browse", itemsControllerExample.delete, itemsControllerExample.hasAuthorization); 
->>>>>>> 2f5cad6491e5ae99aec43645b17e26ec4f145fc8
+app.get("/", itemlistController.list);
+app.get("/edit/:id", itemEditItemController.editRecord)
+app.post("/new", itemCreateItemController.insert);
+app.post("/edit/:id", itemEditItemController.update);
+app.delete("/:id", itemDeleteItemController.delete);
 
 var orderController = require("./server/controllers/orderController")
 app.get("/orders", orderController.list);
@@ -155,7 +142,7 @@ var ProfileController = require("./server/controllers/ProfileController")
 app.get("/editprofile", ProfileController.editRecord);
 //write
 app.post("/editprofile", ProfileController.update);
- 
+
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
     var err = new Error('Not Found');
