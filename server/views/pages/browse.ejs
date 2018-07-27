@@ -44,6 +44,10 @@
                         <div class="pay pull-right">
                             <a href="/transaction/<%= transactionList.updatepayment_id%>" class="btn btn-success" role="button">Buy for <%= itemList.price%></a>
                         </div>
+
+                        <div>
+                            <button href="/transaction/<%= itemList.id%>" class="btn btn-success" role="button">Pay now <%= itemList.price%></button>
+                        </div>
                     </div>
                 </div>
             </div>
