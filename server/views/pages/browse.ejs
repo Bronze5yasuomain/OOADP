@@ -11,10 +11,7 @@
         <div class="row">
             <% itemList.forEach(function(itemList) { %>
             <div class="col-sm-6 col-md-4">
-                <div data-id="<%= itemList.id%">
-                    <!-- 
-                        <img src="<%= itemList.imagePath%> alt="<%= itemList.imagePath%"> 
-                    -->
+                <div class="thumbnail" data-id="<%= itemList.id%>">
                     <div class="caption">
                         <h4 class="category">
                             <%= itemList.category %>
@@ -31,24 +28,25 @@
                                     $<%= itemList.price %>
                                 </span>
                             </div>
-                        </div>    
+                        </div>
+                        </br>    
                         <p class="condition">
                             <%= itemList.condition %>
                         </p>  
                         <p class="quantity_left">
-                                <%= itemList.quantity_left %>
+                            <%= itemList.quantity_left %>
                         </p>
                         <p class="seller_id">
-                                <%= itemList.seller_id %>
+                            <%= itemList.seller_id %>
                         </p>        
                         <div>
-                            <button href="/transaction/<%= itemList.id%>" class="btn btn-success" role="button">Pay now <%= itemList.price%></button>
+                            <a href="/transaction/<%= itemList.id%>" class="btn btn-success" role="button">Pay now $<%= itemList.price%> </a>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>    
             <% }); %>
+        </div>    
     </div>        
     <% include ../partials/footer %>
     <% include ../partials/javascript %>

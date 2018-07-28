@@ -128,11 +128,11 @@ var itemListController = require("./server/controllers/itemListController")
 var itemViewIndividualController = require("./server/controllers/itemViewIndividualController")
 var itemsControllerExample = require("./server/controllers/itemsControllerExample")
 
-app.get("/browse", itemListController.list, itemViewIndividualController.list, itemsControllerExample.list, itemCreateItemController.hasAuthorization);
-app.get("/browse", itemEditItemController.editRecord, itemsControllerExample.editRecord, itemEditItemController.hasAuthorization)
-app.post("/browse", itemCreateItemController.insert, itemsControllerExample.insert, itemListController.hasAuthorization);
-app.post("/browse", itemsControllerExample.update, itemViewIndividualController.hasAuthorization);
-app.delete("/browse", itemsControllerExample.delete, itemsControllerExample.hasAuthorization);
+app.get("/browse", itemCreateItemController.hasAuthorization, itemListController.list, itemViewIndividualController.list, itemsControllerExample.list);
+app.get("/browse", itemEditItemController.hasAuthorization, itemEditItemController.editRecord, itemsControllerExample.editRecord)
+app.post("/browse", itemListController.hasAuthorization, itemCreateItemController.insert, itemsControllerExample.insert);
+app.post("/browse", itemsControllerExample.hasAuthorization, itemsControllerExample.update);
+app.delete("/browse", itemsControllerExample.hasAuthorization, itemsControllerExample.delete);
 
 var orderController = require("./server/controllers/orderController")
 app.get("/orders", orderController.list);
