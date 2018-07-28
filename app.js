@@ -123,7 +123,6 @@ module.exports = app;
 
 //item listing controller routes
 var itemCreateItemController = require("./server/controllers/itemCreateItemController")
-var itemDeleteItemController = require("./server/controllers/itemDeleteItemController")
 var itemEditItemController = require("./server/controllers/itemEditItemController")
 var itemListController = require("./server/controllers/itemListController")
 var itemViewIndividualController = require("./server/controllers/itemViewIndividualController")

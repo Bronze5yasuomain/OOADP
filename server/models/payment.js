@@ -34,11 +34,11 @@ const executePayment = sequelize.define('Payments', {
 });
 
 
-// paypal.configure({
-//     'mode': 'sandbox',
-//     'client_id': 'AXK_C3j9Kcqx9QPqx5wOFQmoknKQgriKeGpTOfkEMo9HpK1RF6jHaEYPj2Ccexl_TU13_pso_e8TzW9m',
-//     'client_secret': 'ECVVyoDOvvcUS8qyDwRIjxSRQ_CqxWSI_JobPHbbcVrJB1NufXTlIfOHv6O_GFqnowqvUHU1NWj05SKb'
-// });
+paypal.configure({
+    'mode': 'sandbox',
+    'client_id': 'AXK_C3j9Kcqx9QPqx5wOFQmoknKQgriKeGpTOfkEMo9HpK1RF6jHaEYPj2Ccexl_TU13_pso_e8TzW9m',
+    'client_secret': 'ECVVyoDOvvcUS8qyDwRIjxSRQ_CqxWSI_JobPHbbcVrJB1NufXTlIfOHv6O_GFqnowqvUHU1NWj05SKb'
+});
     
 executePayment.sync({force: false, logging:console.log}).then(()=>{
     console.log("Payment table synced");
