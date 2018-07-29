@@ -28,9 +28,9 @@ var sequelize = myDatabase.sequelize;
 //     })
 // }
 
-// List all records from database
+// List records from database
 exports.list = function(req, res) {
-    sequelize.query('select i.id as item_id, i.price as price from Payments p join Items i on p.item_id = i.id ', 
+    sequelize.query('select u.id as buyer_id, i.id as item_id, i.name as name, p.card_name, p.card_number, p.expiry_month, p.expiry_year, p.cvc, i.price as price from Payments p join Items i on p.item_id = i.id join Users u on p.buyer_id = i.name ', 
     { model: executeTransaction})
     .then((executeTransaction) => {
         res.render('transaction', {
@@ -44,6 +44,7 @@ exports.list = function(req, res) {
         })
     })
 };
+
 
 // List one specific record from database
 exports.payment = function(req, res) {
