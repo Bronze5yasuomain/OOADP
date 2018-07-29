@@ -3,36 +3,51 @@ var sequelize = myDatabase.sequelize;
 var Sequelize = myDatabase.Sequelize;
 
 const executeTransaction = sequelize.define('Transactions', {
-    updateintent: {
-        type: Sequelize.STRING,
-    },
-    updatepayment_method: {
-        type: Sequelize.STRING,
-    },
-    updatepayment_id: {
-        type: Sequelize.INTEGER,
-        primaryKey: true,
-        autoIncrement: true,
-    },
-    updateorder_id: {
+    buyer_id:{
         type: Sequelize.INTEGER,
         references: {
-            model: 'Orders',
-            key: 'Order_id'
+            model:'Users',
+            key: 'id'
         }
     },
-    updatecurrency: {
-        type: Sequelize.STRING
+    item_id: {
+        type: Sequelize.INTEGER,
+        references: {
+            model:'Items',
+            key: 'id'
+        }
     },
-    updatequantity: {
-        type: Sequelize.INTEGER
+    name: {
+        type: Sequelize.STRING,
+        references: {
+            model:'Users',
+            key: 'name'
+        }
     },
-    updatedescription: {
-        type: Sequelize.STRING
+    card_name: {
+        type: Sequelize.STRING,
+    },
+    card_number: {
+        type: Sequelize.INTEGER,
+    },
+    expiry_month: {
+        type: Sequelize.INTEGER,
+    },
+    expiry_year: {
+        type: Sequelize.INTEGER,
+    },
+    cvc: {
+        type: Sequelize.INTEGER,
+    },
+    price: {
+        type: Sequelize.DOUBLE,
+        references: {
+            model:'Items',
+            key: 'price'
+        }
     },
 });
 
 executeTransaction.sync({force: false, logging:console.log}).then(()=>{
-    // Table
     console.log("Transactions table synced");
 })

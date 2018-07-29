@@ -4,31 +4,33 @@ var executeTransaction = require('../models/transaction');
 var myDatabase = require('../controllers/database');
 var sequelize = myDatabase.sequelize;
 
-exports.update = function(req, res) {
-    var record_num = req.params.id;
-    var updateData = {
-        updateintent: req.body.intent,
-        updatepayment_method: req.body.payment_method,
-        updatepayment_id: req.body.payment_id,
-        updateorder_id: req.body.order_id,
-        updatecurrency: req.body.currency,
-        updatequantity: req.body.quantity,
-        updatedescription: req.body.description,
-        updateprice: req.body.price,
-    }
+// exports.update = function(req, res) {
+//     var record_num = req.params.id;
+//     var updateData = {
+//         buyer_id: req.body.buyer_id,
+//         item_id: req.body.item_id,
+//         name: req.body.name,
+//         card_name: req.body.card_name,
+//         card_number: req.body.card_number,
+//         expiry_month: req.body.expiry_month,
+//         expiry_year: req.body.expiry_year,
+//         year: req.body.year,
+//         price: req.body.price,
+//     }
 
-    executeTransaction.update(updateData, { where: { id: record_num} }) .then((updatedRecord) => {
-        if (!updatedRecord || updatedRecord == 0) {
-            return res.send(400, {
-                message: 'error'
-            });
-        }
-        res.status(200).send({ message: 'Updated payment record:' + record_num})
-    })
-}
+//     executeTransaction.update(updateData, { where: { id: record_num} }) .then((updatedRecord) => {
+//         if (!updatedRecord || updatedRecord == 0) {
+//             return res.send(400, {
+//                 message: 'error'
+//             });
+//         }
+//         res.status(200).send({ message: 'Updated payment record:' + record_num})
+//     })
+// }
 
+// List all records from database
 exports.list = function(req, res) {
-    sequelize.query('select p.updateintent, p.updatepayment_method, p.updatepayment_id, o.Order_id as updateorder_id, p.updatecurrency, p.updatequantity, p.updatedescription, p.updateprice from Payments p join Orders o on p.updateorder_id = o.Order_id', 
+    sequelize.query('select i.id as item_id, i.price as price from Payments p join Items i on p.item_id = i.id ', 
     { model: executeTransaction})
     .then((executeTransaction) => {
         res.render('transaction', {
@@ -43,31 +45,36 @@ exports.list = function(req, res) {
     })
 };
 
-exports.editRecord = function(req, res) {
+// List one specific record from database
+exports.payment = function(req, res) {
     var record_num = req.params.id;
     executeTransaction.findById(record_num).then(function (transactionRecord) {
-        res.render('editRecord', {
-            title: "Edit Transactions Record",
+        res.render('transaction', {
+            title: "Transactions Record",
             item: transactionRecord,
             hostPath: req.protocol + "://" + req.get("host")
         });
-    });
+    }).catch((err) =>{
+        return res.status(400).send({
+            message: err
+        })
+    })
 };
 
-exports.delete = function(req, res) {
-    var record_num = req.params.id;
-    console.log("deleting" + record_num);
-    executeTransaction.destroy({ where: { id: record_num} }).then((deletedRecord) => {
-        if (!deletedRecord) {
-            return res.send(400, {
-                message: "error"
-            });
-        }
-        res.status(200).send({ message: "Deleted transaction record:" + record_num });
-    });
-}
+// exports.delete = function(req, res) {
+//     var record_num = req.params.id;
+//     console.log("deleting" + record_num);
+//     executeTransaction.destroy({ where: { id: record_num} }).then((deletedRecord) => {
+//         if (!deletedRecord) {
+//             return res.send(400, {
+//                 message: "error"
+//             });
+//         }
+//         res.status(200).send({ message: "Deleted transaction record:" + record_num });
+//     });
+// }
 
-// Payment authorization middleware
+// Transaction authorization middleware
 exports.hasAuthorization = function (req, res, next) {
 	if (req.isAuthenticated())
 		return next();

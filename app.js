@@ -15,6 +15,12 @@ var index = require('./server/controllers/index');
 // Import login controller
 var auth = require('./server/controllers/auth');
 
+// Import keys from config
+var keys = require('./server/config/transactionkeys');
+
+// Import from stripe 
+var stripe = require('stripe')(keys.stripeSecretKey);
+ 
 // Modules to store session
 var myDatabase = require('./server/controllers/database');
 var expressSession = require('express-session');
@@ -98,8 +104,7 @@ app.get("/payment", paymentController.hasAuthorization, paymentController.list)
 
 // Transaction route
 var transactionController = require("./server/controllers/transactionController")
-app.get('/transaction', transactionController.hasAuthorization, transactionController.list);
-app.post('/transaction', transactionController.hasAuthorization, transactionController.update, transactionController.editRecord, transactionController.delete)
+app.post('/transaction/:id', transactionController.hasAuthorization, transactionController.list, transactionController.payment)
 
 // app.get('/cancel', function (req, res) {
 //     req.cancel();
