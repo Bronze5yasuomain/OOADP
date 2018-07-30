@@ -99,8 +99,8 @@ app.post('/profile', listings.hasAuthorization, upload.single('image'), listings
 //app.get('/profile', auth.isLoggedIn, auth.profile);
 
 // Payment route
-var paymentController = require("./server/controllers/paymentController")
-app.get("/payment", paymentController.hasAuthorization, paymentController.list) 
+var paymentController = require('./server/controllers/paymentController')
+app.get('/payment', paymentController.hasAuthorization, paymentController.list) 
 
 // Transaction route
 var transactionController = require("./server/controllers/transactionController")
