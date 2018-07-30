@@ -14,28 +14,28 @@
 </head>
 <body>
     <% include ../partials/headerafterlogin %>
-    <div><%=item.name%></div>
     <div class="container">
+    </br>
       <h1>Edit Profile</h1>
       <hr>
       <form class="form-horizontal" role="form">
         <div class="form-group">
           <label class="col-lg-3 control-label">Name:</label>
           <div class="col-lg-7">
-            <input class="form-control" type="text" id="inputName" name="name" placeholder="Name" value="<%=item.name%>">
+            <input class="form-control" type="text" id="inputName" name="name" placeholder="Name" value="<%=profile.name%>">
           </div>
         </div>
         <div class="form-group">
           <label class="col-lg-3 control-label">Gender:</label>
           <div class="col-lg-7">
-            <input class="form-control" type="text" id="inputGender" name="gender" placeholder="Gender" value="<%=item.gender%>" >
+            <input class="form-control" type="text" id="inputGender" name="gender" placeholder="Gender" value="<%=profile.gender%>" >
           </div>
         </div>
         <div class="form-group">
           <label class="col-lg-3 control-label">Address:</label>
           <div class="col-lg-7">
-            <input class="form-control" type="text" id="inputAddress" name="address" placeholder="Address"  value="<%=item.address%>">
-          </div>
+              <input class="form-control" type="text" id="inputAddress" name="address" placeholder="Address"  value="<%=profile.address%>">
+            </div>
         </div>
         <div class="form-group">
           <label class="col-md-3 control-label"></label>

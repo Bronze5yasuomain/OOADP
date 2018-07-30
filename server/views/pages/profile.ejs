@@ -66,11 +66,11 @@
     </div>
 <br>
 <div class="second">
-    <button class="tablink" onclick="openPage('Home', this, '#777;')" id="defaultOpen">Listings</button>
-    <button class="tablink" onclick="openPage('News', this, '#777;')">Reviews</button>
-    <button class="tablink" onclick="openPage('Contact', this, '#777;')">Favourites</button>
+    <button class="tablink" onclick="openPage('Listings', this, '#777;')" id="defaultOpen">Listings</button>
+    <button class="tablink" onclick="openPage('Reviews', this, '#777;')">Reviews</button>
+    <button class="tablink" onclick="openPage('Favourites', this, '#777;')">Favourites</button>
 
-    <div id="Home" class="tabcontent">
+    <div id="Listings" class="tabcontent">
         <div class="row">
             <% listings.forEach(function(listings){ %>
                 <div class="col-lg-4">
@@ -84,12 +84,12 @@
         </div>
     </div>
 
-    <div id="News" class="tabcontent">
+    <div id="Reviews" class="tabcontent">
         <h3>Reviews</h3>
         <p>No Reviews yet.</p> 
     </div>
 
-    <div id="Contact" class="tabcontent">
+    <div id="Favourites" class="tabcontent">
         <h3>Favourites</h3>
         <p>No Favourites yet.</p>
     </div>

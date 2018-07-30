@@ -8,7 +8,7 @@ exports.editRecord = function (req, res) {
     ProfileModel.findById(record_num).then(function (userRecord) {
         res.render('editprofile', {
             title: "Edit Profile Page",
-            item: userRecord,
+            profile: userRecord,
             hostPath: req.protocol + "://" + req.get("host")
         });
     }).catch((err) => {

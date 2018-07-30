@@ -78,7 +78,7 @@ exports.uploadImage = function (req, res) {
                     message: "error"
                 });
             }
-            res.redirect('profile');
+            // res.redirect('profile');
         })
 
         //remove from temp folder
@@ -87,7 +87,7 @@ exports.uploadImage = function (req, res) {
                 return res.status(500).send('Something bad happened here');
             }
             //Redirect to profile's page
-            res.redirect('profile');
+            res.redirect('/profile');
         });
     });
 };
