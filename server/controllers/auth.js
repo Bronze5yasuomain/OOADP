@@ -10,7 +10,7 @@ exports.signin = function(req, res) {
 // Signup GET
 exports.signup = function(req, res) {
     // List all Users and sort by Date
-    res.render('signup', { title: 'Signup Page', message: req.flash('signupMessage') });
+    res.render('signup', { title: 'Sign Up Page', message: req.flash('signupMessage') });
 
 };
 // Profile GET
