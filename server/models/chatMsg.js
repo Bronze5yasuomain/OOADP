@@ -27,15 +27,11 @@ ChatMsg.sync({ force: false, logging: console.log}).then(() => {
 });
 
 module.exports = sequelize.model('ChatMsg', ChatMsg);
-
-
+//save into database
+ChatMsg.create(chatData).then((newMessage) => {
+    if(!newMessage) {
+        snedStatus(500);
     }
-    //save into database
-    ChatMsg.create(chatData).then((newMessage) => {
-        if(!newMessage) {
-            snedStatus(500);
-        }
-        io.emit('message', req.body)
-        res.sendstatus(200)
-    })
+    io.emit('message', req.body)
+    res.sendstatus(200)
 });

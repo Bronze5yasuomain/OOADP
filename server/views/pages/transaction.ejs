@@ -81,39 +81,3 @@
     <% include ../partials/footer %>
     <% include ../partials/javascript %>
 </body>    
-
-
-            <!-- <script>
-                function saveDetails() {
-                    var url = "<%=hostPath%>/transaction/<%=updatepayment_id%>";
-                    var newValues = {
-                        updateintent: $("#intent").val(),
-                        updatepayment_method: $("#payment_method").val(),
-                        updatepayment_id: $("#payment_id").val(),
-                        updateorder_id: $("#order_id").val(),
-                        updatecurrency: $("currency").val(),
-                        updatequantity: $("quantity").val(),
-                        updatedescription: $("description").val()
-                    }
-                    $.ajax({
-                        url: url,
-                        type: "POST",
-                        data: JSON.stringify(newValues),
-                        dataType: "json",
-                        contentType: "application/json",
-                        success: function(result){
-                            alert("Records updated successfully");
-                            location.href = "<%=hostPath%>"
-                        },
-                        error: function(result){
-                            alert("Error updating records")
-                            discardChanges();
-                        }
-                    })
-                }
-
-                function discardChanges() {
-                    location.href = "<%=hostPath%>"
-                }
-                
-            </script> -->
