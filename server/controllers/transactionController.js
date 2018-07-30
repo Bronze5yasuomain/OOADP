@@ -30,7 +30,7 @@ var sequelize = myDatabase.sequelize;
 
 // List records from database
 exports.list = function(req, res) {
-    sequelize.query('select u.id as buyer_id, i.id as item_id, i.name as name, p.card_name, p.card_number, p.expiry_month, p.expiry_year, p.cvc, i.price as price from Payments p join Items i on p.item_id = i.id join Users u on p.buyer_id = i.name ', 
+    sequelize.query('select u.id as buyer_id, i.id as item_id, i.name as name, t.card_name, t.card_number, t.expiry_month, t.expiry_year, t.cvc, i.price as price from Transactions t join Items i on t.item_id = i.id join Users u on t.buyer_id = u.id', 
     { model: executeTransaction})
     .then((executeTransaction) => {
         res.render('transaction', {

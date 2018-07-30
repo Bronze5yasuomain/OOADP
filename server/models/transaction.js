@@ -17,13 +17,6 @@ const executeTransaction = sequelize.define('Transactions', {
             key: 'id'
         }
     },
-    name: {
-        type: Sequelize.STRING,
-        references: {
-            model:'Users',
-            key: 'name'
-        }
-    },
     card_name: {
         type: Sequelize.STRING,
     },
@@ -38,13 +31,6 @@ const executeTransaction = sequelize.define('Transactions', {
     },
     cvc: {
         type: Sequelize.INTEGER,
-    },
-    price: {
-        type: Sequelize.DOUBLE,
-        references: {
-            model:'Items',
-            key: 'price'
-        }
     },
 });
 
