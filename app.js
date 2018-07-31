@@ -138,6 +138,7 @@ app.get("/browse", itemEditItemController.hasAuthorization, itemEditItemControll
 app.post("/browse", itemListController.hasAuthorization, itemCreateItemController.insert, itemsControllerExample.insert);
 app.post("/browse", itemsControllerExample.hasAuthorization, itemsControllerExample.update);
 app.delete("/browse", itemsControllerExample.hasAuthorization, itemsControllerExample.delete);
+app.get("/item", itemViewIndividualController.hasAuthorization, itemViewIndividualController.list);
 
 var orderController = require("./server/controllers/orderController")
 app.get("/orders", orderController.list);
