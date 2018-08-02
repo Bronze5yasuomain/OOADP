@@ -3,7 +3,7 @@ var myDatabase = require('../controllers/database');
 var sequelize = myDatabase.sequelize;
 
 /* Ernest this block of codes causes errors 
-//image shit modules
+//image modules
 var fs = require('fs');
 var mime = require('mine');
 var gravatar = require('gravatar');

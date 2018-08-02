@@ -32,6 +32,17 @@ const Images = sequelize.define('Images', {
     }
 });
 
+Images.sync({ force:false, logging:console.log }).then(()=> {
+    console.log("Items synced");
+    Images.upsert({
+        id:1,
+        created:2018-08-02,
+        title:"IphoneImage",
+        imageName:"iphone7",
+        user_id:1
+    })
+})
+
 // force: true will drop the table if it already exists
 Images.sync({ force: false, logging: console.log}).then(() => {
     // Table created
