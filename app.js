@@ -132,6 +132,7 @@ var itemEditItemController = require("./server/controllers/itemEditItemControlle
 var itemListController = require("./server/controllers/itemListController")
 var itemViewIndividualController = require("./server/controllers/itemViewIndividualController")
 var itemsControllerExample = require("./server/controllers/itemsControllerExample")
+var imageController = require("./server/controllers/imageController")
 
 app.get("/browse", itemCreateItemController.hasAuthorization, itemListController.list, itemViewIndividualController.list, itemsControllerExample.list);
 app.get("/browse", itemEditItemController.hasAuthorization, itemEditItemController.editRecord, itemsControllerExample.editRecord)
@@ -139,6 +140,7 @@ app.post("/browse", itemListController.hasAuthorization, itemCreateItemControlle
 app.post("/browse", itemsControllerExample.hasAuthorization, itemsControllerExample.update);
 app.delete("/browse", itemsControllerExample.hasAuthorization, itemsControllerExample.delete);
 app.get("/item", itemViewIndividualController.hasAuthorization, itemViewIndividualController.list);
+app.get("/browse", imageController.hasAuthorization, imageController.show)
 
 var orderController = require("./server/controllers/orderController")
 app.get("/orders", orderController.list);

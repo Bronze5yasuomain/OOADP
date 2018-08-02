@@ -14,47 +14,50 @@
         <div class="container">
             <div class="row">
                 <% itemList.forEach(function(itemList) { %>
-                    <a href="/item" class="individualitem">
-                        <div class="col-sm-6 col-md-4">
-                            <div class="thumbnail" data-id="<%= itemList.id%>">
-                                <div class="caption">
-                                    <h4 class="category">
-                                        <%= itemList.category %>
-                                    </h4>
-                                    <p class="name">
-                                        <%= itemList.name %>
-                                    </p>
-                                    <p class="description">
-                                        <%= itemList.description %>
-                                    </p>
-                                    <div class="clearfix">
-                                        <div class="price pull-left">
-                                            <span>
-                                                $
-                                                <%= itemList.price %>
-                                            </span>
+                   <!-- <% image.forEach(function(image){ %>-->
+                        <a href="/item" class="individualitem">
+                            <div class="col-sm-6 col-md-4">
+                                <div class="thumbnail" data-id="<%= itemList.id%>">
+                                    <img src="<%= image.imageName %>" class="figure-img img-fluid img-rounded" alt="<%= images.id %>">
+                                    <div class="caption">
+                                        <h4 class="category">
+                                            <%= itemList.category %>
+                                        </h4>
+                                        <p class="name">
+                                            <%= itemList.name %>
+                                        </p>
+                                        <p class="description">
+                                            <%= itemList.description %>
+                                        </p>
+                                        <div class="clearfix">
+                                            <div class="price pull-left">
+                                                <span>
+                                                    $
+                                                    <%= itemList.price %>
+                                                </span>
+                                            </div>
                                         </div>
-                                    </div>
-                                    </br>
-                                    <p class="condition">
-                                        <%= itemList.condition %>
-                                    </p>
-                                    <p class="quantity_left">
-                                        <%= itemList.quantity_left %>
-                                    </p>
-                                    <p class="seller_id">
-                                        <%= itemList.seller_id %>
-                                    </p>
-                                    <div>
-                                        <a href="/transaction/<%= itemList.id%>" class="btn btn-success" role="button">Pay now $
-                                            <%= itemList.price%>
-                                        </a>
+                                        </br>
+                                        <p class="condition">
+                                            <%= itemList.condition %>
+                                        </p>
+                                        <p class="quantity_left">
+                                            <%= itemList.quantity_left %>
+                                        </p>
+                                        <p class="seller_id">
+                                            <%= itemList.seller_id %>
+                                        </p>
+                                        <div>
+                                            <a href="/transaction/<%= itemList.id%>" class="btn btn-success" role="button">Pay now $
+                                                <%= itemList.price%>
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </a>
-                    <% }); %>
+                        </a>
+                        <!-- <% }); %> -->
+                            <% }); %>
             </div>
         </div>
         <% include ../partials/footer %>
