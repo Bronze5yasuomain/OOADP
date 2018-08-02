@@ -78,8 +78,8 @@ app.use(flash());
 app.get('/', index.show);
 app.get('/login', auth.signin);
 app.post('/login', passport.authenticate('local-login', {
-    //Success go to Profile Page / Fail go to login page
-    successRedirect: '/profile',
+    //Success go to Home Page / Fail go to login page
+    successRedirect: '/',
     failureRedirect: '/login',
     failureFlash: true
 }));
@@ -103,8 +103,11 @@ var paymentController = require('./server/controllers/paymentController')
 app.get('/payment', paymentController.hasAuthorization, paymentController.list) 
 
 // Transaction route
-var transactionController = require("./server/controllers/transactionController")
-app.post('/transaction/:id', transactionController.hasAuthorization, transactionController.list, transactionController.payment)
+var transactionController = require('./server/controllers/transactionController')
+app.get('/payment', transactionController.hasAuthorization, transactionController.list)
+app.get('/transaction', transactionController.hasAuthorization, transactionController.insert)
+app.get('/transaction/:id', transactionController.hasAuthorization, transactionController.editRecord)
+// app.post('/transaction/:id', transactionController.hasAuthorization, transactionController.update)
 
 // app.get('/cancel', function (req, res) {
 //     req.cancel();
@@ -134,22 +137,21 @@ var itemViewIndividualController = require("./server/controllers/itemViewIndivid
 var itemsControllerExample = require("./server/controllers/itemsControllerExample")
 var imageController = require("./server/controllers/imageController")
 
-app.get("/browse", itemCreateItemController.hasAuthorization, itemListController.list, itemViewIndividualController.list, itemsControllerExample.list);
+app.get("/browse", itemListController.list, itemViewIndividualController.list, itemsControllerExample.list);
 app.get("/browse", itemEditItemController.hasAuthorization, itemEditItemController.editRecord, itemsControllerExample.editRecord)
-app.post("/browse", itemListController.hasAuthorization, itemCreateItemController.insert, itemsControllerExample.insert);
-app.post("/browse", itemsControllerExample.hasAuthorization, itemsControllerExample.update);
-app.delete("/browse", itemsControllerExample.hasAuthorization, itemsControllerExample.delete);
-app.get("/item", itemViewIndividualController.hasAuthorization, itemViewIndividualController.list);
-app.get("/browse", imageController.hasAuthorization, imageController.show)
+app.post("/browse", itemCreateItemController.insert, itemsControllerExample.insert);
+app.post("/browse", itemsControllerExample.update);
+app.delete("/browse", itemsControllerExample.delete);
+app.get("/item", itemViewIndividualController.list);
 
 var orderController = require("./server/controllers/orderController")
 app.get("/orders", orderController.list);
 
 var ProfileController = require("./server/controllers/ProfileController")
 //read
-app.get("/editprofile", ProfileController.editRecord);
+app.get("/editprofile", ProfileController.hasAuthorization, ProfileController.editRecord);
 //write
-app.post("/editprofile", ProfileController.update);
+app.post("/editprofile", ProfileController.hasAuthorization, ProfileController.update);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

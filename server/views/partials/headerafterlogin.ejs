@@ -12,8 +12,8 @@
         list-style: outside none none;
         margin: 0;
         padding: 0;
-
-    }
+        
+            }
     .user-menu li {
         display: inline-block;
     }
@@ -29,6 +29,7 @@
     .header-right ul.list-inline {
         margin: 0;
         text-align: right;
+        padding-left: 90px;
     }
     .header-right ul.list-inline li a {
         display: block;
@@ -190,11 +191,8 @@
                 <div class="col-md-8">
                     <div class="user-menu">
                         <ul>
-                            <li><a href="#"><i class="fa fa-user"></i> My Account</a></li>
-                            <li><a href="#"><i class="fa fa-heart"></i> Wishlist</a></li>
-                            <li><a href="cart.html"><i class="fa fa-user"></i> My Cart</a></li>
-                            <li><a href="checkout.html"><i class="fa fa-user"></i> Checkout</a></li>
-                            <li><a href="#"><i class="fa fa-user"></i> Login</a></li>
+                            <li><a href="/login"><i class="fa fa-user"></i> Login</a></li>
+                            <li><a href='/signup'><i class="fa fa-user"></i> Sign Up</a></li>
                         </ul>
                     </div>
                 </div>
@@ -217,6 +215,14 @@
                                     <li><a href="#">English</a></li>
                                     <li><a href="#">French</a></li>
                                     <li><a href="#">German</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="dropdown dropdown-small">
+                                <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" href="#"><span class="key">My Account</span><b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="/profile">Profile</a></li>
+                                    <li><a href="/editprofile">Edit Profile</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -246,14 +252,10 @@
 
     <!-- second navbar-->
     <div class="topnav">
-            <a style="text-decoration:none;" class="active" href="/browse">Browse Items</a>
+            <a style="text-decoration:none;" href="/">Home</a>
+            <a style="text-decoration:none;" href="/browse">Browse Items</a>
             <a style="text-decoration:none;" href="/payment">Payment</a>
-            <a style="text-decoration:none;" href="/profile">Profile</a>
-            <a style="text-decoration:none;" href="/comments">Comments</a>
             <a style="text-decoration:none;" href="/messages">Chat</a>
-            <a style="text-decoration:none;" href="/videos">Videos</a>
-            <a style="text-decoration:none;" href="/images-gallery">Photos</a>
-            <a style="text-decoration:none;" href="/editprofile">Edit Profile</a>
             <a style="text-decoration:none;" href="/logout">Log Out</a>
             <button type="button" id ="bgc" class="btn btn-danger btn btn-primary btn-md btn btn-secondary pull-right" data-toggle="modal" data-target="#createImage">
                     Sell
