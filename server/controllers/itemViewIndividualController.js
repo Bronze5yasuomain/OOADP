@@ -16,10 +16,10 @@ var Images = require('../models/images')
 
 exports.list=function(req, res){
     ItemModel.findAll({
-        attributes: ['id','name','price','description','condition','category', 'quantity_left', 'seller_id']
+        attributes: ['name','price','description','category']
     }).then(function (items) {
-        res.render('browse', {
-            title:"Item List",
+        res.render('item', {
+            title:"Individual Item",
             itemList: items,
             urlPath: req.protocol + "://" + req.get("host") + req.url
         });

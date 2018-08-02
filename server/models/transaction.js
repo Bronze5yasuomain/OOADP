@@ -3,18 +3,11 @@ var sequelize = myDatabase.sequelize;
 var Sequelize = myDatabase.Sequelize;
 
 const executeTransaction = sequelize.define('Transactions', {
-    buyer_id:{
+    order_id:{
         type: Sequelize.INTEGER,
         references: {
-            model:'Users',
-            key: 'id'
-        }
-    },
-    item_id: {
-        type: Sequelize.INTEGER,
-        references: {
-            model:'Items',
-            key: 'id'
+            model:'Orders',
+            key: 'Order_id'
         }
     },
     card_name: {
@@ -36,4 +29,6 @@ const executeTransaction = sequelize.define('Transactions', {
 
 executeTransaction.sync({force: false, logging:console.log}).then(()=>{
     console.log("Transactions table synced");
-})
+});
+
+module.exports = sequelize.model('Transactions', executeTransaction);

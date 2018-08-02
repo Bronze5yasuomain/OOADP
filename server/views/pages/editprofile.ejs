@@ -14,28 +14,58 @@
 </head>
 <body>
     <% include ../partials/headerafterlogin %>
-    <div><%=item.name%></div>
     <div class="container">
+    </br>
       <h1>Edit Profile</h1>
       <hr>
       <form class="form-horizontal" role="form">
         <div class="form-group">
           <label class="col-lg-3 control-label">Name:</label>
           <div class="col-lg-7">
-            <input class="form-control" type="text" id="inputName" name="name" placeholder="Name" value="<%=item.name%>">
+            <input class="form-control" type="text" id="inputName" name="name" placeholder="Name" value="<%=profile.name%>">
           </div>
         </div>
         <div class="form-group">
           <label class="col-lg-3 control-label">Gender:</label>
           <div class="col-lg-7">
-            <input class="form-control" type="text" id="inputGender" name="gender" placeholder="Gender" value="<%=item.gender%>" >
+            <input class="form-control" type="text" id="inputGender" name="gender" placeholder="Gender" value="<%=profile.gender%>" >
           </div>
         </div>
         <div class="form-group">
           <label class="col-lg-3 control-label">Address:</label>
           <div class="col-lg-7">
-            <input class="form-control" type="text" id="inputAddress" name="address" placeholder="Address"  value="<%=item.address%>">
-          </div>
+              <input class="form-control" type="text" id="inputAddress" name="address" placeholder="Address"  value="<%=profile.address%>">
+            </div>
+        </div>
+        <div class="form-group">
+          <label class="col-lg-3 control-label">Name on Card:</label>
+          <div class="col-lg-7">
+              <input class="form-control" type="text" id="inputNameOnCard" name="name_on_card" placeholder="Name on Card"  value="<%=profile.name_on_card%>">
+            </div>
+        </div>
+        <div class="form-group">
+          <label class="col-lg-3 control-label">Card Number:</label>
+          <div class="col-lg-7">
+              <input class="form-control" type="text" id="inputCardNumber" name="card_number" placeholder="Card Number"  value="<%=profile.card_number%>">
+            </div>
+        </div>
+        <div class="form-group">
+          <label class="col-lg-3 control-label">Card Expiry Month:</label>
+          <div class="col-lg-7">
+              <input class="form-control" type="text" id="inputCardExpiryMonth" name="card_expiry_month" placeholder="Card Expiry Month"  value="<%=profile.card_expiry_month%>">
+            </div>
+        </div>
+        <div class="form-group">
+          <label class="col-lg-3 control-label">Card Expiry Year:</label>
+          <div class="col-lg-7">
+              <input class="form-control" type="text" id="inputCardExpiryYear" name="card_expiry_year" placeholder="Card Expiry Year"  value="<%=profile.card_expiry_year%>">
+            </div>
+        </div>
+        <div class="form-group">
+          <label class="col-lg-3 control-label">CVV:</label>
+          <div class="col-lg-7">
+              <input class="form-control" type="text" id="inputCVV" name="cvv_no" placeholder="CVV"  value="<%=profile.cvv_no%>">
+            </div>
         </div>
         <div class="form-group">
           <label class="col-md-3 control-label"></label>
@@ -47,14 +77,20 @@
     </div>
 </div>
 </div>
-<hr width = "85%">
+<hr width = "50%">
+<br>
 <script>
   function saveChanges() {
             var url = "editprofile";
             var newValues = {
                 name: $("#inputName").val(),
                 gender: $("#inputGender").val(),
-                address: $("#inputAddress").val()
+                address: $("#inputAddress").val(),
+                name_on_card: $("#inputNameOnCard").val(),
+                card_number: $("#inputCardNUmber").val(),
+                card_expiry_month: $("#inputCardExpiryMonth").val(),
+                card_expiry_year: $("#inputCardExpiryYear").val(),
+                cvv_no: $("#inputCVV").val()
             }
             $.ajax({
                 url: url,
