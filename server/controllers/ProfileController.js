@@ -27,7 +27,12 @@ exports.update = function (req, res) {
         email: req.body.email,
         gender: req.body.gender,
         address: req.body.address,
-        password: req.body.password
+        password: req.body.password,
+        name_on_card: req.body.name_on_card, 
+        card_number: req.body.card_number,
+        card_expiry_month: req.body.card_expiry_month,
+        card_expiry_year: req.body.card_expiry_year,
+        cvv_no: req.body.cvv_no
     }
     ProfileModel.update(updateData, { where: { id: record_num } }).then((updatedRecord) => {
         if (!updatedRecord || updatedRecord == 0) {
