@@ -78,8 +78,8 @@ app.use(flash());
 app.get('/', index.show);
 app.get('/login', auth.signin);
 app.post('/login', passport.authenticate('local-login', {
-    //Success go to Profile Page / Fail go to login page
-    successRedirect: '/profile',
+    //Success go to Home Page / Fail go to login page
+    successRedirect: '/',
     failureRedirect: '/login',
     failureFlash: true
 }));
@@ -135,22 +135,30 @@ var itemEditItemController = require("./server/controllers/itemEditItemControlle
 var itemListController = require("./server/controllers/itemListController")
 var itemViewIndividualController = require("./server/controllers/itemViewIndividualController")
 var itemsControllerExample = require("./server/controllers/itemsControllerExample")
+var imageController = require("./server/controllers/imageController")
 
-app.get("/browse", itemCreateItemController.hasAuthorization, itemListController.list, itemViewIndividualController.list, itemsControllerExample.list);
+app.get("/browse", itemListController.list, itemViewIndividualController.list, itemsControllerExample.list);
 app.get("/browse", itemEditItemController.hasAuthorization, itemEditItemController.editRecord, itemsControllerExample.editRecord)
+<<<<<<< HEAD
 app.post("/browse", itemListController.hasAuthorization, itemCreateItemController.insert, itemsControllerExample.insert);
 app.post("/browse", itemsControllerExample.hasAuthorization, itemsControllerExample.update);
 app.delete("/browse", itemsControllerExample.hasAuthorization, itemsControllerExample.delete);
 app.get("/item", itemViewIndividualController.hasAuthorization, itemViewIndividualController.list);
+=======
+app.post("/browse", itemCreateItemController.insert, itemsControllerExample.insert);
+app.post("/browse", itemsControllerExample.update);
+app.delete("/browse", itemsControllerExample.delete);
+app.get("/item", itemViewIndividualController.list);
+>>>>>>> ae2323f418604e2328cdd0d5c2b6108ed88cf364
 
 var orderController = require("./server/controllers/orderController")
 app.get("/orders", orderController.list);
 
 var ProfileController = require("./server/controllers/ProfileController")
 //read
-app.get("/editprofile", ProfileController.editRecord);
+app.get("/editprofile", ProfileController.hasAuthorization, ProfileController.editRecord);
 //write
-app.post("/editprofile", ProfileController.update);
+app.post("/editprofile", ProfileController.hasAuthorization, ProfileController.update);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
