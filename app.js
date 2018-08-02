@@ -139,10 +139,17 @@ var imageController = require("./server/controllers/imageController")
 
 app.get("/browse", itemListController.list, itemViewIndividualController.list, itemsControllerExample.list);
 app.get("/browse", itemEditItemController.hasAuthorization, itemEditItemController.editRecord, itemsControllerExample.editRecord)
+<<<<<<< HEAD
 app.post("/browse", itemListController.hasAuthorization, itemCreateItemController.insert, itemsControllerExample.insert);
 app.post("/browse", itemsControllerExample.hasAuthorization, itemsControllerExample.update);
 app.delete("/browse", itemsControllerExample.hasAuthorization, itemsControllerExample.delete);
 app.get("/item", itemViewIndividualController.hasAuthorization, itemViewIndividualController.list);
+=======
+app.post("/browse", itemCreateItemController.insert, itemsControllerExample.insert);
+app.post("/browse", itemsControllerExample.update);
+app.delete("/browse", itemsControllerExample.delete);
+app.get("/item", itemViewIndividualController.list);
+>>>>>>> ae2323f418604e2328cdd0d5c2b6108ed88cf364
 
 var orderController = require("./server/controllers/orderController")
 app.get("/orders", orderController.list);
