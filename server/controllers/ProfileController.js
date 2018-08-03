@@ -18,6 +18,7 @@ exports.editRecord = function (req, res) {
     });
 };
 
+
 //Update user record in database
 exports.update = function (req, res) {
     var record_num = req.user.id;
