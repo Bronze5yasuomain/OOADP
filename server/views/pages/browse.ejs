@@ -14,21 +14,18 @@
         <div class="container">
             <div class="row">
                 <% itemList.forEach(function(itemList) { %>
-                 <% images.forEach(function(images){ %>
                         <a href="/item" class="individualitem">
                             <div class="col-sm-6 col-md-4">
                                 <div class="thumbnail" data-id="<%= itemList.id%>">
-                                    <img src="<%= image.imageName %>" class="figure-img img-fluid img-rounded" alt="<%= images.id %>">
                                     <div class="caption">
+                                            <img src="images/itemimages/iphone7.jpg" alt="error"/>
                                         <h4 class="category">
-                                            <%= itemList.category %>
+                                            <%= itemList.name %>
                                         </h4>
                                         <p class="name">
-                                            <%= itemList.name %>
+                                            <%= itemList.category %>
                                         </p>
-                                        <p class="description">
-                                            <%= itemList.description %>
-                                        </p>
+                                        
                                         <div class="clearfix">
                                             <div class="price pull-left">
                                                 <span>
@@ -37,15 +34,14 @@
                                                 </span>
                                             </div>
                                         </div>
-                                        </br>
                                         <p class="condition">
-                                            <%= itemList.condition %>
+                                            Condition: <%= itemList.condition %>
                                         </p>
                                         <p class="quantity_left">
-                                            <%= itemList.quantity_left %>
+                                            Quantity Left: <%= itemList.quantity_left %>
                                         </p>
                                         <p class="seller_id">
-                                            <%= itemList.seller_id %>
+                                            Seller ID: <%= itemList.seller_id %>
                                         </p>
                                         <div>
                                             <a href="/transaction/<%= itemList.id%>" class="btn btn-success" role="button">Pay now $
@@ -56,8 +52,8 @@
                                 </div>
                             </div>
                         </a>
-                        <% }); %> 
-                            <% }); %>
+                    <% }); %>
+                        </div>
             </div>
         </div>
         <% include ../partials/footer %>
