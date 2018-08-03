@@ -36,13 +36,13 @@ const Users = sequelize.define('Users', {
         type: Sequelize.STRING
     },
     card_expiry_month: {
-        type: Sequelize.STRING
+        type: Sequelize.INTEGER
     },
     card_expiry_year: {
-        type: Sequelize.STRING
+        type: Sequelize.INTEGER
     },
     cvv_no: {
-        type: Sequelize.STRING
+        type: Sequelize.INTEGER
     }
 });
 
@@ -59,9 +59,9 @@ Users.sync({force: false, logging:console.log}).then(()=>{
         account_type: 'default',
         name_on_card: 'Ben Leo Jun Ming',
         card_number: '4275 3156 0372 5493',
-        card_expiry_month: '01',
-        card_expiry_year: '19',
-        cvv_no: '567'
+        card_expiry_month: 01,
+        card_expiry_year: 19,
+        cvv_no: 567
     })
 });
 

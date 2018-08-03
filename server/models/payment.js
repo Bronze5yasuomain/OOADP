@@ -15,13 +15,13 @@ const executePayment = sequelize.define('Payments', {
         primaryKey: true,
         autoIncrement: true,
     },
-    order_id: {
-        type: Sequelize.INTEGER,
-        references: {
-            model: 'Orders',
-            key: 'Order_id'
-        }
-    },
+    // order_id: {
+    //     type: Sequelize.INTEGER,
+    //     references: {
+    //         model: 'Orders',
+    //         key: 'Order_id'
+    //     }
+    // },
     currency: {
         type: Sequelize.STRING
     },

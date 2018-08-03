@@ -18,6 +18,22 @@ exports.editRecord = function (req, res) {
     });
 };
 
+// List records from database
+exports.list = function(req, res) {
+    sequelize.query('select u.id, u.name, u.email, u.password, u.address, u.gender, u.account_type, u.name_on_card, u.card_number, u.card_expiry_month, u.card_expiry_year, u.cvv_no from Users u', 
+    { model: ProfileModel, raw:true })
+    .then((ProfileModel) => {
+        res.render('profile', {
+            title:'Profile',
+            profileList: profileModel,
+            urlPath: req.protocol + "://" + req.get("host") + req.url
+        });
+    }).catch((err) =>{
+        return res.status(400).send({
+            message: err
+        })
+    })
+};
 
 //Update user record in database
 exports.update = function (req, res) {
