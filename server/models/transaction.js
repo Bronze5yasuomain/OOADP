@@ -3,27 +3,12 @@ var sequelize = myDatabase.sequelize;
 var Sequelize = myDatabase.Sequelize;
 
 const executeTransaction = sequelize.define('Transactions', {
-    order_id:{
+    orderid: {
         type: Sequelize.INTEGER,
         references: {
             model:'Orders',
             key: 'Order_id'
         }
-    },
-    card_name: {
-        type: Sequelize.STRING,
-    },
-    card_number: {
-        type: Sequelize.INTEGER,
-    },
-    expiry_month: {
-        type: Sequelize.INTEGER,
-    },
-    expiry_year: {
-        type: Sequelize.INTEGER,
-    },
-    cvc: {
-        type: Sequelize.INTEGER,
     },
 });
 

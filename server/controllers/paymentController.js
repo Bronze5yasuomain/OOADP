@@ -1,26 +1,26 @@
 var express = require('express');
 var app = express();
-const paypal = require('paypal-rest-sdk');
+// const paypal = require('paypal-rest-sdk');
 var executePayment = require('../models/payment');
 var myDatabase = require('../controllers/database');
 var sequelize = myDatabase.sequelize;
 
-exports.success = function (req, res) {
+// exports.success = function (req, res) {
 
-    const paymentId = req.query.paymentId;
-    const payerId = req.query.PayerID;
+//     const paymentId = req.query.paymentId;
+//     const payerId = req.query.PayerID;
 
-    paypal.payment.execute(paymentId, executePayment, function (error, payment, req, res) {
-        if (error) {
-            console.log(error.response);
-            throw error;
-        } else {
-            console.log(JSON.stringify(payment));
-            res.end();
-            }
-    res.redirect('/browse') ;
-        }
-    )} 
+//     paypal.payment.execute(paymentId, executePayment, function (error, payment, req, res) {
+//         if (error) {
+//             console.log(error.response);
+//             throw error;
+//         } else {
+//             console.log(JSON.stringify(payment));
+//             res.end();
+//             }
+//     res.redirect('/browse') ;
+//         }
+//     )} 
                                         
 // Create a new payment record into the database
 exports.create = function (req, res) {
