@@ -17,6 +17,8 @@ exports.insert = function (req, res) {
     }
     // Save data
     executeTransaction.create(transactionData).then((newRecord, created) => {
+        console.log('hi')
+        console.log(newRecord)
         if (!newRecord) {
             return res.send(400, {
                 message: "error"
@@ -62,7 +64,7 @@ exports.delete = function(req, res) {
                 message: "error"
             });
         }
-        res.status(200).send({ message: "Deleted transaction record:" + record_num });
+        res.status(200).send({ message: "Deleted card record:" + record_num });
     });
 }
 
