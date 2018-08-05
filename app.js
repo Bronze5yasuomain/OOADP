@@ -98,17 +98,16 @@ app.get('/profile', listings.hasAuthorization, listings.show);
 app.post('/profile', listings.hasAuthorization, upload.single('image'), listings.uploadImage);
 //app.get('/profile', auth.isLoggedIn, auth.profile);
 
-// // Payment route
-// var paymentController = require('./server/controllers/paymentController')
-// app.get('/payment', paymentController.hasAuthorization, paymentController.list) 
 
 // Transaction route
 var transactionController = require('./server/controllers/transactionController')
-app.get('/payment', transactionController.hasAuthorization, transactionController.list)
-app.post('/transaction', transactionController.hasAuthorization, transactionController.insert)
+
+// app.get('/payment', transactionController.hasAuthorization, transactionController.list)
+app.post('/new', transactionController.hasAuthorization, transactionController.insert)
+app.get('/carddetails', transactionController.hasAuthorization, transactionController.list)
 app.get('/transaction/:id', transactionController.hasAuthorization, transactionController.editRecord)
-app.post('/transaction/:id', transactionController.hasAuthorization, transactionController.update)
-app.delete('/payment/:id', transactionController.hasAuthorization, transactionController.delete)
+// app.delete('/payment/:id', transactionController.hasAuthorization, transactionController.delete)
+// app.post('/transaction/:id', transactionController.hasAuthorization, transactionController.update)
 
 // app.get('/cancel', function (req, res) {
 //     req.cancel();

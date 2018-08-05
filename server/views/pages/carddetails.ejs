@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <% include ../partials/stylesheet %>
+</head>
+<body>
+    <% include ../partials/headerafterlogin %>
+    <div class="container">
+        <div class= "row">
+            <div class="col-sm-6 col-md-4 col-md-offset-4 col-sm-offset-3">
+                <h1>Your Card Details</h1>
+                <table class="table">
+                    <thread>
+                      <tr>
+                        <th>Card Name</th>
+                        <th>Card Number</th>
+                        <th>Expiry Month</th>
+                        <th>Expiry Year</th>
+                        <th>CVV Number</th>
+                      </tr>
+                        <tr class="rowRecord">
+                          <td>
+                            <%= details.name_on_card %>
+                          </td>
+                          <td>
+                            <%= details.card_number %>
+                          </td>
+                          <td>
+                            <%= details.card_expiry_month %>
+                          </td>
+                          <td>
+                            <%= details.card_expiry_year %>
+                          </td>
+                          <td>
+                            <%= details.cvv_no %>
+                          </td>
+                        </tr>  
+                    </thread>
+                </table>
+                <div>
+                  <a href="/editProfile" class="btn btn-success" role="button">Edit</a>
+                </div>
+                <br><br>
+            </div>
+        </div>
+    </div>
+    <% include ../partials/footer %>
+    <% include ../partials/javascript %>
+</body>
+</html>
