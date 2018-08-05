@@ -31,9 +31,10 @@ exports.list = function (req, res) {
     }).catch((err) => {
         return res.status(400).send({
             message: err
-        });
-    });
+        })
+    })
 };
+
 exports.editRecord = function (req, res) {
     var record_num = req.params.id;
     orderData.findById(record_num).then(function (orderRecord){

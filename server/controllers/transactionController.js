@@ -1,5 +1,6 @@
 var express = require('express');
 var app = express();
+var Order = require('../models/order');
 var executeTransaction = require('../models/transaction');
 var myDatabase = require('../controllers/database');
 var sequelize = myDatabase.sequelize;
@@ -7,15 +8,15 @@ var sequelize = myDatabase.sequelize;
 
 // List records from database
 exports.list = function(req, res) {
-    sequelize.query('select * from Transactions t join Orders o on t.orderid = o.Order_id', 
-    { model: executeTransaction, raw:true })
-    .then( function (executeTransaction) {
+    sequelize.query('select * from Transactions t join Orders o on t.orderid = o.Order_id', { model: executeTransaction, raw:true })
+    .then((executeTransaction) => {
+        console.log(executeTransaction)
         res.render('payment', {
-            title:'Transactions',
+            title:'Card Payment Details',
             transactionList: executeTransaction,
             urlPath: req.protocol + "://" + req.get("host") + req.url
         });
-    }).catch((err) =>{
+    }).catch((err) => {
         return res.status(400).send({
             message: err
         })
@@ -53,7 +54,7 @@ exports.editRecord = function(req, res) {
     executeTransaction.findById(record_num).then(function (transactionRecord) {
         res.render('transaction', {
             title: "Transactions Record",
-            item: transactionRecord,
+            transaction: transactionRecord,
             hostPath: req.protocol + "://" + req.get("host")
         });
     }).catch((err) =>{
