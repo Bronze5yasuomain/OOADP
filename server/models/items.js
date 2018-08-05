@@ -3,7 +3,6 @@ var sequelize = myDatabase.sequelize;
 var Sequelize = myDatabase.Sequelize;
 
 const ItemModel = sequelize.define('Items',{
-   
     id:{
         type: Sequelize.INTEGER,
         primaryKey: true,

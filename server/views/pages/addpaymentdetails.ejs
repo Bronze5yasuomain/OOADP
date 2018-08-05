@@ -6,10 +6,42 @@
 </head>
 <body>
     <% include ../partials/headerafterlogin %>
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-6 col-md-4 col-md-offset-4 col-sm-offset-3">
-
-            </div>
+    <div class="modal fade" id="createStudent" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <form action="/new" method="post">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">Create New Payment Record</h4>
+              </div>
+              <div class="modal-body">
+                <fieldset class="form-group">
+                  <label for="inputname">Name on Card:</label>
+                  <input type="text" id="inputname" name="name_on_card" class="form-control" placeholder="Name On Card" required="true">
+                </fieldset>
+                <fieldset class="form-group">
+                  <label for="inputcardnumber">Student Name</label>
+                  <input type="text" id="inputcardnumber" name="card_number" class="form-control" placeholder="Card Number" required="true">
+                </fieldset>
+                <fieldset class="form-group">
+                  <label for="inputexpirymonth">Expiry Month</label>
+                  <input type="text" id="inputexpirymonth" name="card_expiry_month" class="form-control" placeholder="Expiry Month" required="true">
+                </fieldset>
+                <fieldset class="form-group">
+                  <label for="inputexpiryyear">Expiry Year</label>
+                  <input type="text" id="inputexpiryyear" name="card_expiry_year" class="form-control" placeholder="Expiry Year" required="true">
+                </fieldset>
+                <fieldset class="form-group">
+                  <label for="inputcvv">CVV</label>
+                  <input type="text" id="inputcvv" name="cvv_no" class="form-control" placeholder="CVV Number" required="true">
+                </fieldset>
+              </div>
+              <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">Add Record</button>
+              </div>
+            </form>
+          </div>
         </div>
-    </div>            
+      </div>     

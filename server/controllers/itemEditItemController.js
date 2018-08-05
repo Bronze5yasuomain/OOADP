@@ -1,4 +1,5 @@
 var ItemModel = require('../models/items');
+var ItemModel = require('../models/transaction')
 var myDatabase = require('../controllers/database');
 var sequelize = myDatabase.sequelize;
 
