@@ -103,10 +103,11 @@ app.post('/profile', listings.hasAuthorization, upload.single('image'), listings
 var transactionController = require('./server/controllers/transactionController')
 
 // app.get('/payment', transactionController.hasAuthorization, transactionController.list)
-app.post('/new', transactionController.hasAuthorization, transactionController.insert)
-app.get('/carddetails', transactionController.hasAuthorization, transactionController.list)
+app.get('/addpaymentdetails', transactionController.hasAuthorization, transactionController.list)
+app.post('/addpaymentdetails', transactionController.hasAuthorization, transactionController.insert)
+app.get('/carddetails', transactionController.hasAuthorization, transactionController.show)
 app.get('/transaction/:id', transactionController.hasAuthorization, transactionController.editRecord)
-// app.delete('/payment/:id', transactionController.hasAuthorization, transactionController.delete)
+app.delete('/delete/:id', transactionController.hasAuthorization, transactionController.delete)
 // app.post('/transaction/:id', transactionController.hasAuthorization, transactionController.update)
 
 // app.get('/cancel', function (req, res) {

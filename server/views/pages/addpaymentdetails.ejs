@@ -6,10 +6,9 @@
 </head>
 <body>
     <% include ../partials/headerafterlogin %>
-    <div class="modal fade" id="createStudent" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
-            <form action="/new" method="post">
+            <form action="addpaymentdetails" method="post">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
@@ -22,7 +21,7 @@
                   <input type="text" id="inputname" name="name_on_card" class="form-control" placeholder="Name On Card" required="true">
                 </fieldset>
                 <fieldset class="form-group">
-                  <label for="inputcardnumber">Student Name</label>
+                  <label for="inputcardnumber">Card Number</label>
                   <input type="text" id="inputcardnumber" name="card_number" class="form-control" placeholder="Card Number" required="true">
                 </fieldset>
                 <fieldset class="form-group">
@@ -43,5 +42,6 @@
               </div>
             </form>
           </div>
-        </div>
-      </div>     
+        </div>  
+      <% include ../partials/footer %>
+      <% include ../partials/javascript %>   
