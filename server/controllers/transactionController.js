@@ -1,6 +1,7 @@
 var express = require('express');
 var app = express();
 // var itemRecord = require('../models/items');
+var carddetails = require('../models/carddetails');
 var userRecord = require('../models/profile');
 var myDatabase = require('../controllers/database');
 var sequelize = myDatabase.sequelize;
@@ -16,7 +17,7 @@ exports.insert = function (req, res) {
         cvv_no: req.body.cvv_no,
     }
     // Save data
-    executeTransaction.create(transactionData).then((newRecord, created) => {
+    carddetails.create(transactionData).then((newRecord, created) => {
         console.log('hi')
         console.log(newRecord)
         if (!newRecord) {
@@ -28,18 +29,28 @@ exports.insert = function (req, res) {
     }) 
 };
 
-// List records from database
+// Render Add Payment Details Page
 exports.list = function(req, res) {
-    sequelize.query('select u.name_on_card, u.card_number, u.card_expiry_month, u.card_expiry_year, u.cvv_no from Users u', 
-    { model: userRecord, raw:true })
-    .then((details) => {
-        console.log('hi')
-        console.log(details)
-        res.render('carddetails', {
-            title:'Card Details',
-            details: details[0],
-        })
+    res.render('addpaymentdetails', {
+        title:'Add Payment Details',
     })
+};
+
+// List all records from database
+exports.show = function (req, res) {
+    carddetails.findAll({
+        attributes: ['name_on_card', 'card_number', 'card_expiry_month', 'card_expiry_year', 'cvv_no']
+    }).then(function (carddetails) {
+        res.render('carddetails', {
+            title: "All Payment Records",
+            carddetails: carddetails,
+            urlPath: req.protocol + "://" + req.get("host") + req.url
+        });    
+    }).catch((err) => {
+        return res.status(400).send({
+            message: err
+        });
+    });
 };
 
 // Read a record from database
