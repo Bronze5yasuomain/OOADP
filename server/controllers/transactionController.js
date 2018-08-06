@@ -39,11 +39,11 @@ exports.list = function(req, res) {
 // List all records from database
 exports.show = function (req, res) {
     carddetails.findAll({
-        attributes: ['name_on_card', 'card_number', 'card_expiry_month', 'card_expiry_year', 'cvv_no']
+        attributes: ['details_id','name_on_card', 'card_number', 'card_expiry_month', 'card_expiry_year', 'cvv_no']
     }).then(function (carddetails) {
         res.render('carddetails', {
             title: "All Payment Records",
-            carddetails: carddetails,
+            detailsList: carddetails,
             urlPath: req.protocol + "://" + req.get("host") + req.url
         });    
     }).catch((err) => {
@@ -65,17 +65,19 @@ exports.editRecord = function(req, res) {
         })
     })
 };
-
+ 
 exports.delete = function(req, res) {
     var record_num = req.params.id;
+    console.log('hi');
     console.log("deleting" + record_num);
-    executeTransaction.destroy({ where: { id: record_num} }).then((deletedRecord) => {
+    carddetails.destroy({ where: { details_id: record_num} }).then((deletedRecord) => {
         if (!deletedRecord) {
             return res.send(400, {
                 message: "error"
             });
         }
-        res.status(200).send({ message: "Deleted card record:" + record_num });
+        // res.status(200).send({ message: "Deleted card record:" + record_num });
+        res.redirect('/carddetails')
     });
 }
 

@@ -106,8 +106,9 @@ var transactionController = require('./server/controllers/transactionController'
 app.get('/addpaymentdetails', transactionController.hasAuthorization, transactionController.list)
 app.post('/addpaymentdetails', transactionController.hasAuthorization, transactionController.insert)
 app.get('/carddetails', transactionController.hasAuthorization, transactionController.show)
-app.get('/transaction/:id', transactionController.hasAuthorization, transactionController.editRecord)
-app.delete('/delete/:id', transactionController.hasAuthorization, transactionController.delete)
+// app.get('/transaction/:id', transactionController.hasAuthorization, transactionController.editRecord)
+// app.post('/transaction/:id', transactionController.hasAuthorization, transactionController.show)
+app.get('/carddetails/:id', transactionController.hasAuthorization, transactionController.delete)
 // app.post('/transaction/:id', transactionController.hasAuthorization, transactionController.update)
 
 // app.get('/cancel', function (req, res) {

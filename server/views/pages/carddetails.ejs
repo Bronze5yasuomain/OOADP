@@ -19,23 +19,28 @@
                         <th>Expiry Year</th>
                         <th>CVV Number</th>
                       </tr>
-                        <tr class="rowRecord">
+                      <% for(var d = 0; d < detailsList.length; d++){ %>
+                        <tr class="rowRecord" data-id="<%= detailsList[d].details_id %>">
                           <td>
-                            <%= details.name_on_card %>
+                            <%= detailsList[d].name_on_card %>
                           </td>
                           <td>
-                            <%= details.card_number %>
+                            <%= detailsList[d].card_number %>
                           </td>
                           <td>
-                            <%= details.card_expiry_month %>
+                            <%= detailsList[d].card_expiry_month %>
                           </td>
                           <td>
-                            <%= details.card_expiry_year %>
+                            <%= detailsList[d].card_expiry_year %>
                           </td>
                           <td>
-                            <%= details.cvv_no %>
+                            <%= detailsList[d].cvv_no %>
                           </td>
-                        </tr>  
+                          <td>
+                            <a href="/carddetails/<%= detailsList[d].details_id %>" class="deleteBtn btn btn-danger">Delete</a>
+                          </td>
+                        </tr>
+                      <% } %>    
                     </thread>
                 </table>
                 <div>
