@@ -43,10 +43,10 @@ ItemModel.sync({ force:false, logging:console.log }).then(() => {
     console.log("Items synced");
     ItemModel.upsert({
         id:1,
-        category:"Electronics",
-        name:"Iphone 7 Plus",
-        description:"Retina HD display 5.5-inch(diagonal) widescreen LCD Multi-Touch display with IPS technology, A10 Fusion chip with 64-bit architecture, Rated IP67 under IEC standard 60529",
-        price:870.00,
+        category:"Sports Shoe",
+        name:"Nike Free RN 2018",
+        description:"Made for short runs, from your daily 5K to that spontaneous sprint, the Nike Free RN 2018 Men's Running Shoe is as flexible as ever. The innovative sole has an updated design, yet still delivers a comfortable, barefoot-like feel.",
+        price:165.00,
         condition:"New",
         quantity_left: 2,
         seller_id: 1
