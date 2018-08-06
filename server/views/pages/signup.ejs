@@ -3,6 +3,41 @@
 <head>
     <title><%= title %></title>
     <% include ../partials/stylesheet %>
+
+    <style>
+.wrapper {	
+	margin-top: 80px;
+  margin-bottom: 80px;
+}
+
+.form-signin {
+  max-width: 380px;
+  padding: 15px 35px 45px;
+  margin: 0 auto;
+  background-color:#eee !important;	
+  border: 1px solid rgba(0,0,0,0.1);  
+}
+
+	.form-control {
+	  position: relative;
+	  font-size: 16px;
+	  height: auto;
+	  padding: 10px;
+}
+
+	input[type="text"] {
+	  margin-bottom: -1px;
+	  border-bottom-left-radius: 0;
+	  border-bottom-right-radius: 0;
+	}
+
+	input[type="password"] {
+	  margin-bottom: 20px;
+	  border-top-left-radius: 0;
+	  border-top-right-radius: 0;
+	}
+    </style>
+
 </head>
 <body>
     <% include ../partials/headerafterlogin %>
@@ -13,6 +48,7 @@
                 <strong>Warning!</strong> <%= message %>.
             </div>
             <% } %>
+            <div class="wrapper"> 
             <form class="form-signin" action="/signup" method="post">
                 <h2 class="form-signin-heading">
                     <span class="nowrap">
@@ -30,10 +66,10 @@
                 <button class="btn btn-lg btn-primary btn-block" type="submit">Sign Up</button>
                 <br>
                 <p style ="text-align: center">Already have an account?</p>
-                <a href="/login"><p style ="text-align: center">Login</p></a>
+                <a id ="link" href="/login"><p style ="text-align: center">Login</p></a>
             </form>
         </div>
-
+    </div>
         <% include ../partials/footer %>
         <% include ../partials/javascript %>
     </body>

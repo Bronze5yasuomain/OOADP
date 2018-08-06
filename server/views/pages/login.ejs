@@ -3,6 +3,42 @@
 <head>
     <title><%= title %></title>
     <% include ../partials/stylesheet %>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style>
+
+.wrapper {	
+	margin-top: 80px;
+  margin-bottom: 80px;
+}
+
+.form-signin {
+  max-width: 380px;
+  padding: 15px 35px 45px;
+  margin: 0 auto;
+  background-color:#eee !important;	
+  border: 1px solid rgba(0,0,0,0.1);  
+}
+
+	.form-control {
+	  position: relative;
+	  font-size: 16px;
+	  height: auto;
+	  padding: 10px;
+}
+
+	input[type="text"] {
+	  margin-bottom: -1px;
+	  border-bottom-left-radius: 0;
+	  border-bottom-right-radius: 0;
+	}
+
+	input[type="password"] {
+	  margin-bottom: 20px;
+	  border-top-left-radius: 0;
+	  border-top-right-radius: 0;
+	}
+    </style>
+
 </head>
 <body>
     <% include ../partials/headerafterlogin %>
@@ -15,24 +51,25 @@
                 </button>
                 <strong>Oops!</strong> <%= message %>.
             </div>
-	    <% } %>
-        <form class="form-signin" action="/login" method="post">
-            <h2 class="form-signin-heading">
-                 <span class="nowrap">
-                        Login
-                 </span>
-            </h2>
-            <br>
-            <label for="inputEmail" class="sr-only">Email address</label>
-            <input type="email" id="email" name="email" class="form-control" placeholder="Email address" required="">
-            <label for="inputPassword" class="sr-only">Password</label>
-            <input type="password" id="password" name="password" class="form-control" placeholder="Password" required="">
-            <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
-            <br>
-            <p style ="text-align: center">Don't have an account?</p>
-            <a href="/signup"><p style ="text-align: center">Sign Up</p></a>
-        </form>
-    </div>
+        <% } %>
+        <div class="wrapper">
+            <form class="form-signin" action="/login" method="post">      
+                <h2 class="form-signin-heading">
+                    <span class="nowrap">
+                           Login
+                    </span>
+                </h2>
+               <label for="inputEmail" class="sr-only">Email address</label>
+               <input type="email" id="email" name="email" class="form-control" placeholder="Email address" required="">
+               <label for="inputPassword" class="sr-only">Password</label>
+               <input type="password" id="password" name="password" class="form-control" placeholder="Password" required="">
+               <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+               <br>
+               <p style ="text-align: center">Don't have an account?</p>
+               <a id ="link" href="/signup"><p style ="text-align: center">Sign Up</p></a>
+           </form>
+       </div>
+       </div>
 
     <% include ../partials/footer %>
     <% include ../partials/javascript %>
