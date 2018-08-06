@@ -5,20 +5,25 @@
     <% include ../partials/stylesheet %>
 </head>
 <style>
+    body{
+        width: 100%;
+    }
     body > .box {
         padding-top: 30px;
         width: 45%;
-        margin: auto; }
+        margin: auto;
+        background-color: #E8E8E8;
+        border: 1px solid black;
+         }
     /* Style tab links */
     .tablink {
-        background-color: #99C4D2;
-        color: grey;
+        background-color: white;
+        color: black;;
         float: left;
         border: none;
         outline: none;
         cursor: pointer;
-        padding: 14px 16px;
-        font-size: 17px;
+        font-size: 30px;
         width: 33%;
     }
 
@@ -40,79 +45,68 @@
         margin: auto;
         width: 80%;
     }
+    .moveright1{
+        padding-left: 30px;
+    }
 </style>
 <body>
     <% include ../partials/headerafterlogin %>
+            <br>
+            <div class="box">
+                    <div class="datails">
+                        <div class="card text-xs-center">
+                            <br>
+                            <img id ="image" class="card-img-top" src="<%= avatar %>" alt="Card image cap">
+                            <div class="card-block">
+                                <p class="card-text">
+                                    <strong>Name</strong>: <%= user.name %><br>
+                                    <strong>Email</strong>: <%= user.email %>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    <br>
+    <div class="second">
+        <button class="tablink" onclick="openPage('Listings', this, '#777;')" id="defaultOpen">Listings</button>
 
-    <div class="box">
-        <div class="datails">
-            <div class="card text-xs-center">
-                <br>
-                <img id ="image" class="card-img-top" src="<%= avatar %>" alt="Card image cap">
-                <div class="card-block">
-                    <p class="card-text">
-                        <strong>Name</strong>: <%= user.name %><br>
-                        <strong>Email</strong>: <%= user.email %>
-                    </p>
-                        <a href=""><strong>0 </strong>Following</a>
-                        <a href=""><strong>0 </strong>Followers</a>
+        <div id="Listings" class="tabcontent">
+                <div class="row">
+                    <% listings.forEach(function(listings){ %>
+                        <div class="col-lg-4">
+                            <figure class="figure">
+                                <img src="images/<%= listings.imageName %>" class="figure-img img-fluid img-rounded" alt="<%= listings.imageName %>">
+                                <figcaption class="figure-caption"><%= listings.title %></figcaption>
+                                <small>Upload by: <%= listings.user_id %></small>
+                            </figure>
+                        </div>
+                    <% }); %>
                 </div>
             </div>
-        </div>
     </div>
-<br>
-<div class="second">
-    <button class="tablink" onclick="openPage('Listings', this, '#777;')" id="defaultOpen">Listings</button>
-    <button class="tablink" onclick="openPage('Reviews', this, '#777;')">Reviews</button>
-    <button class="tablink" onclick="openPage('Favourites', this, '#777;')">Favourites</button>
-
-    <div id="Listings" class="tabcontent">
-        <div class="row">
-            <% listings.forEach(function(listings){ %>
-                <div class="col-lg-4">
-                    <figure class="figure">
-                        <img src="images/<%= listings.imageName %>" class="figure-img img-fluid img-rounded" alt="<%= listings.imageName %>">
-                        <figcaption class="figure-caption"><%= listings.title %></figcaption>
-                        <small>Upload by: <%= listings.user_id %></small>
-                    </figure>
-                </div>
-            <% }); %>
-        </div>
     </div>
-
-    <div id="Reviews" class="tabcontent">
-        <h3>Reviews</h3>
-        <p>No Reviews yet.</p> 
-    </div>
-
-    <div id="Favourites" class="tabcontent">
-        <h3>Favourites</h3>
-        <p>No Favourites yet.</p>
-    </div>
-
-</div>
-
-<script>
-function openPage(pageName,elmnt,color) {
-    var i, tabcontent, tablinks;
-    tabcontent = document.getElementsByClassName("tabcontent");
-    for (i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].style.display = "none";
+    
+    <script>
+    function openPage(pageName,elmnt,color) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablink");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].style.backgroundColor = "";
+        }
+        document.getElementById(pageName).style.display = "block";
+        elmnt.style.backgroundColor = color;
+    
     }
-    tablinks = document.getElementsByClassName("tablink");
-    for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].style.backgroundColor = "";
-    }
-    document.getElementById(pageName).style.display = "block";
-    elmnt.style.backgroundColor = color;
-
-}
-// Get the element with id="defaultOpen" and click on it
-document.getElementById("defaultOpen").click();
-</script>
-
-
-        <% include ../partials/footer %>
-        <% include ../partials/javascript %>
-    </body>
-    </html>
+    // Get the element with id="defaultOpen" and click on it
+    document.getElementById("defaultOpen").click();
+    </script>
+    
+    
+            <% include ../partials/footer %>
+            <% include ../partials/javascript %>
+        </body>
+        </html>

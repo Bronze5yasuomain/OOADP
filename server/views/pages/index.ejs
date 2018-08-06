@@ -1,20 +1,169 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <title><%= title %></title>
-    <% include ../partials/stylesheet %>
+  <title><%= title %></title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <% include ../partials/stylesheet %>
 </head>
+
+<style>
+.carousel {
+  width:700px;
+  height:350px;
+}
+.separator1{
+    padding-top: 50px;
+  }
+  #separator2{
+    margin-top: 20px;
+  }
+  .promo-area{
+    position: relative;
+    overflow: hidden;
+    background: none repeat scroll 0 0 ;
+    color: black;
+    padding: 77px 0 100px;
+    background-color: #17a78b;
+  }
+  .single-promo {
+    border: 1px solid black;
+    color: white;
+    font-size: 25px;
+    font-weight: 200;
+    padding: 20px 10px;
+    text-align: center;
+    background-color: #17a78b;
+  }
+  .single-promo i {
+    font-size: 50px;
+  }
+
+  .single-promo:hover {
+    background-color: black;
+  }
+
+.card{
+  padding-left: 30px;
+  padding-right: 50px;
+}
+.card-img-top{
+  width: 300px;
+  height: 250px;
+  
+object-fit:cover;
+}
+</style>
+
 <body>
     <% include ../partials/headerafterlogin %>
+<div class="container">
+  <h2>Products</h2>
+  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
 
-    <div class="container">
-      <div class="page-header m-t-1">
-        <h1><%= title %></h1>
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner">
+
+      <div class="item">
+          <img class="mySlides2" src="images/rsz_leather-shoes.jpg" alt="leather-shoes">
       </div>
-      <p class="lead">Welcome to <%= title %></p>
+
+      <div class="item active">
+        <img class="mySlides2" src="images/rsz_girl_in_shoes.jpg" alt="sports-shoes">
+      </div>
+
+    
+      <div class="item">
+        <img class="mySlides2" src="images/sandals4.jpg" alt="sandals">
+      </div>
+  
     </div>
 
-    <% include ../partials/footer %>
-    <% include ../partials/javascript %>
+    <!-- Left and right controls -->
+    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+</div>
+<div class= "container"></div>
+<div class="promo-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-sm-6">
+                <div class="single-promo">
+                    <i class="fa fa-refresh"></i>
+                    <p>30 Days return</p>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="single-promo">
+                    <i class="fa fa-truck"></i>
+                    <p>Free shipping</p>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="single-promo">
+                    <i class="fa fa-lock"></i>
+                    <p>Secure payments</p>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="single-promo">
+                    <i class="fa fa-gift"></i>
+                    <p>New products</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> <!-- End promo area -->
+<div class="separator1"></div>
+<div class="bd-example">
+  <div class="card-group">
+    <div class="card">
+      <img class="card-img-top" src="images/vans-shoes.jpg" alt="Card image cap" />
+      <div class="card-body">
+        <h5 class="card-title">VANS
+          Core Classic Old Skool Sneakers</h5>
+        <p class="card-text">Black Classic Old Skool Sneakers by Vans feature a monochromatic design. Show off your stylish side with these sleek casual sneakers. </p>
+        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+      </div>
+    </div>
+    <div class="card">
+      <img class="card-img-top" src="images/high-heels.jpg" alt="Card image cap" />
+      <div class="card-body">
+        <h5 class="card-title">Pump Heels With Back Detail</h5>
+        <p class="card-text">Solid tone pointed toe pumps with ribbed back detail</p>
+        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+      </div>
+    </div>
+    <div class="card">
+      <img class="card-img-top" src="images/sandals2.jpg"  alt="Card image cap" />
+      <div class="card-body">
+        <h5 class="card-title">Havaianas Beach Flip Flops Ladies</h5>
+        <p class="card-text">Great for the warmer weather, the Havaianas High Fashion Flip Flops are a wedge design with a foot strap and toe post. The footbed is textured and the sole has textured grip to improve traction.</p>
+        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+
+<% include ../partials/footer %>
+<% include ../partials/javascript %>
 </body>
 </html>

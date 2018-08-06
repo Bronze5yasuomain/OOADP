@@ -45,7 +45,7 @@ ItemModel.sync({ force:false, logging:console.log }).then(() => {
         id:1,
         category:"Electronics",
         name:"Iphone 7 Plus",
-        description:"5.5 inch Retina Display, A10 Fusion Chip",
+        description:"Retina HD display 5.5-inch(diagonal) widescreen LCD Multi-Touch display with IPS technology, A10 Fusion chip with 64-bit architecture, Rated IP67 under IEC standard 60529",
         price:870.00,
         condition:"New",
         quantity_left: 2,

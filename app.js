@@ -145,6 +145,7 @@ app.post("/browse", itemsControllerExample.update);
 app.delete("/browse", itemsControllerExample.delete);
 app.get("/item", itemViewIndividualController.list);
 
+app.get("/item", itemListController.list, itemViewIndividualController.list, itemsControllerExample.list);
 
 var orderController = require("./server/controllers/orderController")
 app.get("/orders", orderController.list);
