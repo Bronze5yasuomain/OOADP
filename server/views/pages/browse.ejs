@@ -10,28 +10,29 @@
 
 <body>
     <% include ../partials/headerafterlogin %>
-        <h1>Items for Sale</h1>
+        <h1 style="position: relative; left:100px">Items for Sale</h1>
         <div class="container">
             <div class="row">
                 <% itemList.forEach(function(itemList) { %>
-                    <a href="/item" class="individualitem">
-                        <div class="col-sm-6 col-md-4">
-                            <div class="thumbnail" data-id="<%= itemList.id%>">
-                                <div class="caption">
-                                    <img src="images/itemimages/iphone7.jpg" alt="error" />
-                                    <h4 class="category" style="font-weight: bold">
-                                        <%= itemList.name %>
-                                    </h4>
-                                    <p class="name">
-                                        <%= itemList.category %>
-                                    </p>
-
-                                    <div class="clearfix">
-                                        <div class="price pull-left">
-                                            <span>
-                                                $
-                                                <%= itemList.price %>
-                                            </span>
+                        <a href="/item" class="individualitem">
+                            <div class="col-sm-6 col-md-4">
+                                <div class="thumbnail" data-id="<%= itemList.id%>">
+                                    <div class="caption">
+                                            <img src="images/itemimages/nikefreern.webp" alt="error"/>
+                                        <h4 class="category" style="font-weight: bold">
+                                            <%= itemList.name %>
+                                        </h4>
+                                        <p class="name">
+                                            <%= itemList.category %>
+                                        </p>
+                                        
+                                        <div class="clearfix">
+                                            <div class="price pull-left">
+                                                <span>
+                                                    $
+                                                    <%= itemList.price %>
+                                                </span>
+                                            </div>
                                         </div>
                                     </div>
                                     <p class="condition">

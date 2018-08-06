@@ -12,6 +12,9 @@ const ChatMsg = sequelize.define('ChatMsg', {
     name: {
         type: Sequelize.STRING
     },
+    name2: {
+        type: Sequelize.STRING
+    },
     message: {
         type: Sequelize.STRING,
         allowNull: false,
@@ -23,15 +26,7 @@ const ChatMsg = sequelize.define('ChatMsg', {
 //force: true will frop the table if it already exists
 ChatMsg.sync({ force: false, logging: console.log}).then(() => {
     // Table created
-    console.log("ChaeMsgs table synced");
+    console.log("ChatMsgs table synced");
 });
 
 module.exports = sequelize.model('ChatMsg', ChatMsg);
-//save into database
-ChatMsg.create(chatData).then((newMessage) => {
-    if(!newMessage) {
-        snedStatus(500);
-    }
-    io.emit('message', req.body)
-    res.sendstatus(200)
-});

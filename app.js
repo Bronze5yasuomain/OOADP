@@ -10,6 +10,8 @@ const ejs = require('ejs');
 var multer = require('multer');
 var upload = multer({ dest:'./public/uploads', limits: {fileSize: 1500000, files:1} });
 
+var httpServer = require('http').Server(app);
+
 // Import home controller
 var index = require('./server/controllers/index');
 // Import login controller
@@ -157,13 +159,51 @@ app.get("/editprofile", ProfileController.hasAuthorization, ProfileController.ed
 //write
 app.post("/editprofile", ProfileController.hasAuthorization, ProfileController.update);
 
+var io = require ('socket.io')(httpServer);
+var chatConnections = 0;
+var ChatMsg = require('./server/models/chatMsg');
+
+io.on('connection', function(socket) {
+    chatConnections++;
+    console.log("Num of chat users connected: "+chatConnections);
+
+    socket.on('disconnect', function() {
+        chatConnections --;
+        console.log("Num of chat users connected: "+chatConnections);
+    });
+})
+
+app.get('/messages', function (req, res) {
+    ChatMsg.findAll().then((chatMessages) => {
+        res.render('chatMsg', {
+            url: req.protocol + "://" + req.get("host") + req.url,
+            data: chatMessages
+        });
+    });
+});
+
+app.post('/messages', function (req, res) {
+    var chatData = {
+        name: req.body.name,
+        name2:req.body.name,
+        message: req.body.message
+    }
+    //save into database
+    ChatMsg.create(chatData).then((newMessage) => {
+        if(!newMessage) {
+            sendStatus(500);
+        }
+        io.emit('message', req.body)
+        res.sendstatus(200)
+    })
+});
+
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
     var err = new Error('Your coding skills is not there yet');
     err.status = 404;
     next(err);
 });
-
 
 // production error handler
 // no stacktraces leaked to user
@@ -179,3 +219,4 @@ app.use(function (err, req, res, next) {
 app.listen(4000, ()=> {
     console.log("Server started.")
 })
+

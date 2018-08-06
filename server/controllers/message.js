@@ -1,4 +1,4 @@
-//Set up Chat function
+// Setup chat
 var io = require ('socket.io')(httpServer);
 var chatConnections = 0;
 var ChatMsg = require('./server/models/chatMsg');

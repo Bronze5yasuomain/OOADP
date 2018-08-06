@@ -51,22 +51,23 @@
                     <div class="col-md-8">
                         <div class="product-content-right">
                             <div class="product-breadcroumb">
-                                <a href="/server/views/pages/index.ejs">Home</a>
+                                <a href="/">Home</a>
                                 <a href=""><%= itemList.category %></a>
-                                <a href=""><%= itemList.name %></a>
+                                <a href="/item"><%= itemList.name %></a>
                             </div>
 
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="product-images">
                                         <div class="product-main-img">
-                                            <img src="images/itemimages/iphone7.jpg" alt="">
+                                            <img src="images/itemimages/nikefreern.webp" alt="">
                                         </div>
 
                                         
                                         <div class="product-gallery">
-                                            <img src="images/itemimages/iphone7-2.png" alt="">
-                                            <img src="images/itemimages/iphone7-3.png" alt="">
+                                            <img src="images/itemimages/nikefreern2.webp" alt="">
+                                            <img src="images/itemimages/nikefreern3.webp" alt="">
+                                            <img src="images/itemimages/nikefreern4.webp" alt="">
                                         </div>
                                     </div>
                                 </div>
@@ -83,6 +84,10 @@
                                             <p style="color: lightskyblue">Category: <%= itemList.category %> </p>
                                         </div>
 
+                                        <div>
+                                            <button style="height:50px; width:150px ;color: #fff; background-color: #d2232a; border-color: #d2232a; font-weight: 400; text-align: center; font-family:Arial, Helvetica, sans-serif" href"./server/views/pages/chatMsg.ejs">Chat with buyer</button>
+                                        </div>
+                                        <br>
                                         <div role="tabpanel">
                                             <ul class="product-tab" role="tablist">
                                                 <li role="presentation" class="active">
