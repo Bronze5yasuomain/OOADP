@@ -15,7 +15,7 @@ const carddetails = sequelize.define('CardDetails', {
         type: Sequelize.INTEGER,
     },
     card_expiry_month: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
     },
     card_expiry_year: {
         type: Sequelize.INTEGER,
